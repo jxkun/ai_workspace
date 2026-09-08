@@ -1,0 +1,94 @@
+task: setup-codex-harness-study
+backend: openspec
+current_phase: merge
+round: 1
+max_rounds: 10
+round_no_progress: 0
+modules:
+  - id: M01
+    source_task: 1.1-1.3
+    name: project-baseline
+    kind: document
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: []
+    impact_on: [M03, M04]
+    active_issue: null
+    files:
+      - README.md
+      - AGENTS.md
+      - .gitignore
+    last_update: 2026-09-07 11:20:00
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M02
+    source_task: 2.1-2.2
+    name: source-snapshot
+    kind: implement
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: []
+    impact_on: [M03]
+    active_issue: null
+    files:
+      - repo/codex/
+      - docs/source-snapshot.md
+    last_update: 2026-09-07 11:26:00
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M03
+    source_task: 3.1-3.4
+    name: methodology-and-image-policy
+    kind: document
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: [M01]
+    impact_on: [M04]
+    active_issue: null
+    files:
+      - docs/index.md
+      - docs/methodology.md
+      - docs/diagram-policy.md
+      - image/README.md
+      - image/methodology/codex-harness-study-methodology-v1.png
+    last_update: 2026-09-07 11:22:00
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M04
+    source_task: 4.1-4.3
+    name: validation-and-closeout
+    kind: test
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: [M01, M02, M03]
+    impact_on: []
+    active_issue: null
+    files:
+      - openspec/changes/setup-codex-harness-study/
+    last_update: 2026-09-07 11:27:00
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0

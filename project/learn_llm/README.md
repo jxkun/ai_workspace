@@ -165,6 +165,17 @@ Python LLM Agent 学习空间。
    - 工作流自动化
    - 部署记录
 
+## Notebook 环境
+
+当前项目已初始化项目内 Notebook kernel：
+
+- 虚拟环境：`.venv`
+- Python：3.11
+- Kernel 显示名：`Python (learn_llm)`
+- 说明文档：[docs/notebook-setup.md](./docs/notebook-setup.md)
+
+打开 Notebook 时，选择 `Python (learn_llm)` 作为内核。可以先运行 [notebooks/00_smoke_test.ipynb](./notebooks/00_smoke_test.ipynb) 验证环境。
+
 ## 当前状态
 
 当前是一个初始化后的学习骨架。下一步比较适合补充 Python 环境配置文件，以及 `examples/` 下的第一个最小可运行示例。

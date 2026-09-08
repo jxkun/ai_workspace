@@ -1,0 +1,96 @@
+task: add-codex-harness-learning-roadmap
+backend: openspec
+current_phase: merge
+round: 1
+max_rounds: 10
+round_no_progress: 0
+modules:
+  - id: M01
+    source_task: 2.1-2.2
+    name: source-layer-survey
+    kind: analysis
+    status: done
+    owner: Explorer
+    reviewer: Master
+    depends_on: []
+    impact_on: [M03]
+    active_issue: null
+    files:
+      - repo/codex/codex-rs/Cargo.toml
+      - repo/codex/codex-rs/cli/src/
+      - repo/codex/codex-rs/tui/src/
+      - repo/codex/codex-rs/app-server/src/
+      - repo/codex/codex-rs/core/src/
+      - repo/codex/codex-rs/protocol/src/
+    last_update: 2026-09-07 11:39:00
+    task_id: 01a079f3-be4f-7cf3-ab72-2096e1e1d35f
+    launched_at: 2026-09-07 11:31:00
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M02
+    source_task: 3.2-4.3
+    name: beginner-roadmap-review
+    kind: plan-review
+    status: done
+    owner: Reviewer
+    reviewer: Master
+    depends_on: []
+    impact_on: [M03, M04]
+    active_issue: null
+    files:
+      - docs/codex-harness-learning-roadmap.md
+      - image/learning-roadmap/
+    last_update: 2026-09-07 11:39:00
+    task_id: 01a079f3-bede-7641-9af5-d02171ff8d01
+    launched_at: 2026-09-07 11:31:00
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M03
+    source_task: 3.1-3.3
+    name: roadmap-document
+    kind: document
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: [M01, M02]
+    impact_on: [M04]
+    active_issue: null
+    files:
+      - docs/codex-harness-learning-roadmap.md
+      - docs/index.md
+    last_update: 2026-09-07 11:39:00
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M04
+    source_task: 4.1-5.3
+    name: roadmap-visuals-and-validation
+    kind: test
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: [M03]
+    impact_on: []
+    active_issue: null
+    files:
+      - image/learning-roadmap/codex-harness-roadmap-v2.svg
+      - image/learning-roadmap/codex-harness-layer-map-v2.svg
+      - openspec/changes/add-codex-harness-learning-roadmap/
+    last_update: 2026-09-07 11:39:00
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0

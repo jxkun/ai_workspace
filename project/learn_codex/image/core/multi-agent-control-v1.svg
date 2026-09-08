@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="960" viewBox="0 0 1600 960" role="img" aria-labelledby="title desc">
+  <title id="title">Codex 多 agent 控制面</title>
+  <desc id="desc">展示模型协作工具、tool handler、AgentControl、AgentRegistry、ThreadManagerState、父子 CodexThread 和事件回传之间的关系。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+    <filter id="shadow" x="-6%" y="-8%" width="112%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 40px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .sub { font: 400 18px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .box { fill: #ffffff; stroke-width: 2; filter: url(#shadow); }
+      .core { fill: #123047; stroke: #0f172a; stroke-width: 2.5; filter: url(#shadow); }
+      .label { font: 700 22px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .corelabel { font: 800 25px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .text { font: 500 16px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .small { font: 500 14px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #64748b; }
+      .arrow { fill: none; stroke: #475569; stroke-width: 2.4; marker-end: url(#arrow); stroke-linecap: round; stroke-linejoin: round; }
+      .dash { fill: none; stroke: #94a3b8; stroke-width: 2; stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="960"/>
+  <text class="title" x="80" y="76">Codex 多 agent 控制面</text>
+  <text class="sub" x="82" y="112">模型只能调用协作工具；真正的线程创建、容量、身份和权限继承都收束到 AgentControl。</text>
+
+  <rect class="box" x="80" y="185" width="260" height="250" rx="18" stroke="#2563eb"/>
+  <text class="label" x="110" y="230">模型工具调用</text>
+  <text class="text" x="110" y="270">spawn_agent</text>
+  <text class="text" x="110" y="302">send_message / followup</text>
+  <text class="text" x="110" y="334">wait / list / interrupt</text>
+  <text class="small" x="110" y="380">来源：multi_agents_v2 handlers</text>
+
+  <rect class="box" x="430" y="185" width="260" height="250" rx="18" stroke="#0891b2"/>
+  <text class="label" x="460" y="230">Tool Handler</text>
+  <text class="text" x="460" y="270">解析参数</text>
+  <text class="text" x="460" y="302">构造 child config</text>
+  <text class="text" x="460" y="334">转成 control request</text>
+  <text class="small" x="460" y="380">不直接操作 Session 内部</text>
+
+  <rect class="core" x="760" y="160" width="330" height="300" rx="22"/>
+  <text class="corelabel" x="818" y="220">AgentControl</text>
+  <text class="text" x="804" y="268" fill="#dbeafe">spawn / send / resume</text>
+  <text class="text" x="804" y="300" fill="#dbeafe">status / list / close</text>
+  <text class="text" x="804" y="332" fill="#dbeafe">capacity / residency</text>
+  <text class="text" x="804" y="364" fill="#dbeafe">shared rollout budget</text>
+  <text class="small" x="804" y="410" fill="#bfdbfe">root session 树共享</text>
+
+  <rect class="box" x="1180" y="130" width="310" height="155" rx="18" stroke="#16a34a"/>
+  <text class="label" x="1212" y="176">AgentRegistry</text>
+  <text class="text" x="1212" y="215">thread id / path / nickname</text>
+  <text class="text" x="1212" y="247">max threads 与预留释放</text>
+
+  <rect class="box" x="1180" y="355" width="310" height="155" rx="18" stroke="#7c3aed"/>
+  <text class="label" x="1212" y="401">ThreadManagerState</text>
+  <text class="text" x="1212" y="440">spawn_new_thread</text>
+  <text class="text" x="1212" y="472">fork / resume with history</text>
+
+  <rect class="box" x="210" y="610" width="330" height="150" rx="18" stroke="#d97706"/>
+  <text class="label" x="242" y="655">Parent CodexThread</text>
+  <text class="text" x="242" y="695">当前 turn / 环境快照</text>
+  <text class="text" x="242" y="727">rollout flush 后可 fork</text>
+
+  <rect class="box" x="760" y="610" width="330" height="150" rx="18" stroke="#0f766e"/>
+  <text class="label" x="792" y="655">Child CodexThread</text>
+  <text class="text" x="792" y="695">独立 thread / session</text>
+  <text class="text" x="792" y="727">继承受限上下文与权限</text>
+
+  <rect class="box" x="1180" y="610" width="310" height="150" rx="18" stroke="#be123c"/>
+  <text class="label" x="1212" y="655">Events / Analytics</text>
+  <text class="text" x="1212" y="695">SubAgentActivity</text>
+  <text class="text" x="1212" y="727">collab tool call metrics</text>
+
+  <path class="arrow" d="M340 310 H430"/>
+  <path class="arrow" d="M690 310 H760"/>
+  <path class="arrow" d="M1090 235 C1125 220 1140 205 1180 205"/>
+  <path class="arrow" d="M1090 355 C1125 375 1140 410 1180 430"/>
+  <path class="arrow" d="M375 610 C470 530 630 410 760 350"/>
+  <path class="arrow" d="M925 460 V610"/>
+  <path class="arrow" d="M1090 685 H1180"/>
+  <path class="arrow" d="M760 685 H540"/>
+  <path class="dash" d="M210 792 H1490"/>
+  <text class="small" x="212" y="830">边界：模型看到的是工具；权限、容量、父子归属和恢复都在 core 控制面内校验。</text>
+</svg>

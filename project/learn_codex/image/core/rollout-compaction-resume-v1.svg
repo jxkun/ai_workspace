@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1020" viewBox="0 0 1700 1020" role="img" aria-labelledby="title desc">
+  <title id="title">Rollout、Compaction 与 Resume 总流程</title>
+  <desc id="desc">展示会话运行时如何持续记录 rollout，触发 compaction 安装 checkpoint，并在 resume 或 fork 时重建历史。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+    <filter id="shadow" x="-6%" y="-8%" width="112%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 40px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .sub { font: 400 18px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .lane { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; filter: url(#shadow); }
+      .box { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
+      .compact { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; }
+      .store { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2; }
+      .resume { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; }
+      .label { font: 800 22px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 500 16px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .small { font: 500 14px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #64748b; }
+      .arrow { fill: none; stroke: #475569; stroke-width: 2.4; marker-end: url(#arrow); stroke-linecap: round; stroke-linejoin: round; }
+      .dash { fill: none; stroke: #94a3b8; stroke-width: 2; stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1700" height="1020"/>
+  <text class="title" x="80" y="76">Rollout、Compaction 与 Resume 总流程</text>
+  <text class="sub" x="82" y="112">rollout 记录发生过什么；compaction 安装新的历史基座；resume 从基座和尾部事件恢复模型上下文。</text>
+
+  <rect class="lane" x="80" y="170" width="1540" height="190" rx="22"/>
+  <text class="label" x="115" y="220">运行中记录</text>
+  <rect class="box" x="310" y="205" width="250" height="105" rx="14"/>
+  <text class="text" x="335" y="248">模型 response item</text>
+  <text class="small" x="335" y="278">record_conversation_items</text>
+  <rect class="box" x="680" y="205" width="250" height="105" rx="14"/>
+  <text class="text" x="705" y="248">工具调用 / 结果</text>
+  <text class="small" x="705" y="278">stream_events_utils</text>
+  <rect class="store" x="1050" y="205" width="250" height="105" rx="14"/>
+  <text class="text" x="1075" y="248">RolloutRecorder</text>
+  <text class="small" x="1075" y="278">append + materialize</text>
+  <path class="arrow" d="M560 258 H680"/>
+  <path class="arrow" d="M930 258 H1050"/>
+
+  <rect class="lane" x="80" y="420" width="1540" height="230" rx="22"/>
+  <text class="label" x="115" y="470">压缩 checkpoint</text>
+  <rect class="compact" x="290" y="470" width="260" height="120" rx="14"/>
+  <text class="text" x="318" y="512">触发 compaction</text>
+  <text class="small" x="318" y="542">manual / auto / inline</text>
+  <rect class="compact" x="640" y="470" width="280" height="120" rx="14"/>
+  <text class="text" x="668" y="512">本地或远端总结</text>
+  <text class="small" x="668" y="542">Responses / remote / token-budget</text>
+  <rect class="compact" x="1010" y="470" width="300" height="120" rx="14"/>
+  <text class="text" x="1038" y="512">replace_compacted_history</text>
+  <text class="small" x="1038" y="542">replacement_history + metadata</text>
+  <path class="arrow" d="M550 530 H640"/>
+  <path class="arrow" d="M920 530 H1010"/>
+
+  <rect class="lane" x="80" y="710" width="1540" height="190" rx="22"/>
+  <text class="label" x="115" y="760">恢复 / fork</text>
+  <rect class="resume" x="300" y="745" width="260" height="105" rx="14"/>
+  <text class="text" x="328" y="788">读取 rollout items</text>
+  <text class="small" x="328" y="818">thread store / archived</text>
+  <rect class="resume" x="670" y="745" width="280" height="105" rx="14"/>
+  <text class="text" x="698" y="788">reconstruct history</text>
+  <text class="small" x="698" y="818">checkpoint + suffix replay</text>
+  <rect class="resume" x="1060" y="745" width="280" height="105" rx="14"/>
+  <text class="text" x="1088" y="788">Session hydrate</text>
+  <text class="small" x="1088" y="818">history / world state / settings</text>
+  <path class="arrow" d="M560 798 H670"/>
+  <path class="arrow" d="M950 798 H1060"/>
+
+  <path class="arrow" d="M1175 310 C1175 380 1160 420 1160 470"/>
+  <path class="arrow" d="M1160 590 C1160 675 1200 710 1200 745"/>
+  <path class="dash" d="M1320 258 C1480 310 1480 725 1340 798"/>
+  <text class="small" x="1345" y="377">flush / materialize</text>
+  <text class="small" x="1364" y="615">checkpoint 成为恢复基座</text>
+</svg>

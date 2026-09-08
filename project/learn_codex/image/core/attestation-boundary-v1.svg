@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="880" viewBox="0 0 1500 880" role="img" aria-labelledby="title desc">
+  <title id="title">Attestation 与 Guardian 的边界</title>
+  <desc id="desc">展示 Guardian 审批决策和 AttestationProvider 请求证明分别位于工具执行边界和模型请求边界。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+    <filter id="shadow" x="-6%" y="-8%" width="112%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 40px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .sub { font: 400 18px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .box { fill: #ffffff; stroke-width: 2; filter: url(#shadow); }
+      .guardian { fill: #fff1f2; stroke: #be123c; stroke-width: 2; filter: url(#shadow); }
+      .attest { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; filter: url(#shadow); }
+      .host { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2; filter: url(#shadow); }
+      .label { font: 800 22px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 500 16px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .small { font: 500 14px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #64748b; }
+      .arrow { fill: none; stroke: #475569; stroke-width: 2.4; marker-end: url(#arrow); stroke-linecap: round; stroke-linejoin: round; }
+      .sep { stroke: #cbd5e1; stroke-width: 3; stroke-dasharray: 10 10; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1500" height="880"/>
+  <text class="title" x="80" y="76">Attestation 与 Guardian 的边界</text>
+  <text class="sub" x="82" y="112">Guardian 判断动作能否自动批准；attestation 给上游模型请求附加可信证明 header。</text>
+
+  <line class="sep" x1="750" y1="160" x2="750" y2="770"/>
+  <text class="small" x="610" y="805">工具执行边界</text>
+  <text class="small" x="792" y="805">模型请求边界</text>
+
+  <rect class="box" x="90" y="210" width="270" height="150" rx="18" stroke="#64748b"/>
+  <text class="label" x="122" y="258">待执行动作</text>
+  <text class="text" x="122" y="298">命令 / patch / MCP</text>
+  <text class="text" x="122" y="328">网络 / 权限申请</text>
+
+  <rect class="guardian" x="430" y="210" width="250" height="150" rx="18"/>
+  <text class="label" x="462" y="258">Guardian</text>
+  <text class="text" x="462" y="298">审查证据</text>
+  <text class="text" x="462" y="328">allow / deny</text>
+
+  <rect class="box" x="90" y="500" width="270" height="150" rx="18" stroke="#64748b"/>
+  <text class="label" x="122" y="548">执行器</text>
+  <text class="text" x="122" y="588">sandbox / approval</text>
+  <text class="text" x="122" y="618">只在批准后执行</text>
+
+  <rect class="attest" x="830" y="210" width="290" height="150" rx="18"/>
+  <text class="label" x="862" y="258">AttestationProvider</text>
+  <text class="text" x="862" y="298">输入 thread_id</text>
+  <text class="text" x="862" y="328">可选生成 header</text>
+
+  <rect class="host" x="1185" y="210" width="230" height="150" rx="18"/>
+  <text class="label" x="1218" y="258">Host Policy</text>
+  <text class="text" x="1218" y="298">何时证明</text>
+  <text class="text" x="1218" y="328">如何签发</text>
+
+  <rect class="box" x="930" y="500" width="310" height="150" rx="18" stroke="#64748b"/>
+  <text class="label" x="962" y="548">模型 API 请求</text>
+  <text class="text" x="962" y="588">x-oai-attestation</text>
+  <text class="text" x="962" y="618">不改变工具权限</text>
+
+  <path class="arrow" d="M360 285 H430"/>
+  <path class="arrow" d="M555 360 C555 435 345 455 255 500"/>
+  <path class="arrow" d="M1120 285 H1185"/>
+  <path class="arrow" d="M975 360 V500"/>
+  <path class="arrow" d="M1185 575 H1240"/>
+
+  <text class="small" x="90" y="720">要点：Guardian 的输入是具体 action；AttestationProvider 的输入只有 thread_id，证明的是请求上下文。</text>
+</svg>

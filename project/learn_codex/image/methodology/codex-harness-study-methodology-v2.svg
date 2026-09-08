@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Codex harness study methodology</title>
+  <desc id="desc">A four-step methodology for studying the Codex harness: source, map, trace, and image, with each step grounded in docs and OpenSpec.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#44546a"/>
+    </marker>
+    <marker id="arrow-soft" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 1 1 L 11 6 L 1 11 z" fill="#6b778c"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#172b4d" flood-opacity="0.08"/>
+    </filter>
+    <style>
+      .canvas { fill: #f7f9fc; }
+      .title { fill: #132238; font: 700 46px/1.2 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .subtitle { fill: #53627a; font: 400 20px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .step-title { font: 700 28px/1.2 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .step-kicker { fill: #607086; font: 600 14px/1.2 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+      .step-body { fill: #334155; font: 400 17px/1.45 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .docs-title { fill: #132238; font: 700 28px/1.2 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .docs-body { fill: #40516a; font: 400 18px/1.45 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .pill { fill: #ffffff; stroke: #d8e0eb; stroke-width: 1.4; }
+      .pill-text { fill: #334155; font: 600 16px/1.2 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .caption { fill: #6b778c; font: 500 16px/1.4 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .guardrail { fill: #b42318; font: 700 20px/1.2 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .connector { fill: none; stroke: #44546a; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); vector-effect: non-scaling-stroke; }
+      .doc-connector { fill: none; stroke: #6b778c; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-soft); vector-effect: non-scaling-stroke; }
+      .card { fill: #ffffff; stroke-width: 2.5; filter: url(#shadow); }
+      .doc-card { fill: #ffffff; stroke: #172b4d; stroke-width: 2.5; filter: url(#shadow); }
+    </style>
+  </defs>
+
+  <rect class="canvas" width="1440" height="900"/>
+
+  <text class="title" x="100" y="92">Codex Harness Study Methodology</text>
+  <text class="subtitle" x="100" y="132">Read from source, map the system, trace real execution paths, then publish generated images and evidence-backed docs.</text>
+
+  <g transform="translate(100 210)">
+    <rect class="card" x="0" y="0" width="250" height="156" rx="8" stroke="#2563eb"/>
+    <text class="step-kicker" x="28" y="42">Step 01</text>
+    <text class="step-title" x="28" y="82" fill="#1d4ed8">Source</text>
+    <text class="step-body" x="28" y="118">repo/codex as the</text>
+    <text class="step-body" x="28" y="144">first source of truth</text>
+  </g>
+
+  <g transform="translate(390 210)">
+    <rect class="card" x="0" y="0" width="250" height="156" rx="8" stroke="#059669"/>
+    <text class="step-kicker" x="28" y="42">Step 02</text>
+    <text class="step-title" x="28" y="82" fill="#047857">Map</text>
+    <text class="step-body" x="28" y="118">Entry, Core, Support</text>
+    <text class="step-body" x="28" y="144">and Extension layers</text>
+  </g>
+
+  <g transform="translate(680 210)">
+    <rect class="card" x="0" y="0" width="250" height="156" rx="8" stroke="#d97706"/>
+    <text class="step-kicker" x="28" y="42">Step 03</text>
+    <text class="step-title" x="28" y="82" fill="#b45309">Trace</text>
+    <text class="step-body" x="28" y="118">Runtime loop, events,</text>
+    <text class="step-body" x="28" y="144">tools and failures</text>
+  </g>
+
+  <g transform="translate(970 210)">
+    <rect class="card" x="0" y="0" width="250" height="156" rx="8" stroke="#7c3aed"/>
+    <text class="step-kicker" x="28" y="42">Step 04</text>
+    <text class="step-title" x="28" y="82" fill="#6d28d9">Image</text>
+    <text class="step-body" x="28" y="118">Generated diagrams</text>
+    <text class="step-body" x="28" y="144">with source anchors</text>
+  </g>
+
+  <path class="connector" d="M 350 288 H 374"/>
+  <path class="connector" d="M 640 288 H 664"/>
+  <path class="connector" d="M 930 288 H 954"/>
+
+  <g transform="translate(420 500)">
+    <rect class="doc-card" x="0" y="0" width="600" height="168" rx="8"/>
+    <text class="docs-title" x="36" y="54">Docs and OpenSpec</text>
+    <text class="docs-body" x="36" y="92">Every conclusion keeps a file path, symbol, test,</text>
+    <text class="docs-body" x="36" y="120">or protocol anchor that can be checked again.</text>
+    <g transform="translate(36 136)">
+      <rect class="pill" x="0" y="0" width="118" height="38" rx="19"/>
+      <text class="pill-text" x="24" y="25">Markdown</text>
+      <rect class="pill" x="136" y="0" width="112" height="38" rx="19"/>
+      <text class="pill-text" x="162" y="25">Images</text>
+      <rect class="pill" x="266" y="0" width="126" height="38" rx="19"/>
+      <text class="pill-text" x="291" y="25">Evidence</text>
+      <rect class="pill" x="410" y="0" width="120" height="38" rx="19"/>
+      <text class="pill-text" x="438" y="25">Tasks</text>
+    </g>
+  </g>
+
+  <path class="doc-connector" d="M 225 366 C 300 430, 352 472, 426 528"/>
+  <path class="doc-connector" d="M 805 366 V 486"/>
+  <path class="doc-connector" d="M 1095 366 C 1048 430, 1018 468, 982 528"/>
+
+  <text class="caption" x="100" y="730">Preferred cycle: confirm baseline -> read code -> record path -> generate image -> verify links and evidence.</text>
+  <text class="guardrail" x="100" y="778">Final diagrams are generated image assets, not Mermaid or ASCII sketches.</text>
+</svg>

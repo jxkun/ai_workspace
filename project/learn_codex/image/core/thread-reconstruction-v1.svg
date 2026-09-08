@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1000" viewBox="0 0 1700 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Thread 恢复时的 rollout 重建</title>
+  <desc id="desc">展示 reconstruct_history_from_rollout 如何反向扫描找到有效 checkpoint 和上下文元数据，再正向重放尾部记录。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+    <filter id="shadow" x="-6%" y="-8%" width="112%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 40px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .sub { font: 400 18px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .box { fill: #ffffff; stroke-width: 2; filter: url(#shadow); }
+      .item { fill: #f1f5f9; stroke: #64748b; stroke-width: 1.5; }
+      .checkpoint { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; }
+      .meta { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
+      .out { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2; filter: url(#shadow); }
+      .label { font: 800 22px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 500 16px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .small { font: 500 14px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #64748b; }
+      .arrow { fill: none; stroke: #475569; stroke-width: 2.4; marker-end: url(#arrow); stroke-linecap: round; stroke-linejoin: round; }
+      .reverse { fill: none; stroke: #ea580c; stroke-width: 2.8; marker-end: url(#arrow); stroke-linecap: round; stroke-linejoin: round; }
+      .forward { fill: none; stroke: #16a34a; stroke-width: 2.8; marker-end: url(#arrow); stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1700" height="1000"/>
+  <text class="title" x="80" y="76">Thread 恢复时的 rollout 重建</text>
+  <text class="sub" x="82" y="112">反向扫描是为了找到最新有效基座；正向重放是为了保持 surviving suffix 的真实顺序。</text>
+
+  <rect class="box" x="90" y="170" width="620" height="690" rx="22" stroke="#94a3b8"/>
+  <text class="label" x="130" y="220">原始 rollout items</text>
+  <text class="small" x="130" y="250">从旧到新追加；恢复时先从新到旧看</text>
+
+  <g transform="translate(150 300)">
+    <rect class="item" x="0" y="0" width="450" height="54" rx="10"/>
+    <text class="text" x="22" y="34">SessionMeta / startup context</text>
+    <rect class="item" x="0" y="74" width="450" height="54" rx="10"/>
+    <text class="text" x="22" y="108">ResponseItem: user message</text>
+    <rect class="item" x="0" y="148" width="450" height="54" rx="10"/>
+    <text class="text" x="22" y="182">WorldState full snapshot</text>
+    <rect class="checkpoint" x="0" y="222" width="450" height="54" rx="10"/>
+    <text class="text" x="22" y="256">Compacted checkpoint + replacement_history</text>
+    <rect class="item" x="0" y="296" width="450" height="54" rx="10"/>
+    <text class="text" x="22" y="330">ResponseItem / InterAgentCommunication</text>
+    <rect class="meta" x="0" y="370" width="450" height="54" rx="10"/>
+    <text class="text" x="22" y="404">TurnContext + previous settings</text>
+    <rect class="item" x="0" y="444" width="450" height="54" rx="10"/>
+    <text class="text" x="22" y="478">ThreadRolledBack / later events</text>
+  </g>
+
+  <rect class="box" x="820" y="185" width="360" height="210" rx="20" stroke="#ea580c"/>
+  <text class="label" x="858" y="235">1 反向扫描</text>
+  <text class="text" x="858" y="275">找最新 surviving checkpoint</text>
+  <text class="text" x="858" y="307">收集 settings / window id</text>
+  <text class="text" x="858" y="339">识别 rollback 影响</text>
+
+  <rect class="box" x="820" y="455" width="360" height="210" rx="20" stroke="#16a34a"/>
+  <text class="label" x="858" y="505">2 正向重放</text>
+  <text class="text" x="858" y="545">从 checkpoint suffix 开始</text>
+  <text class="text" x="858" y="577">记录 response / IAC</text>
+  <text class="text" x="858" y="609">重放 world-state patch</text>
+
+  <rect class="out" x="1260" y="300" width="330" height="250" rx="20"/>
+  <text class="label" x="1296" y="350">RolloutReconstruction</text>
+  <text class="text" x="1296" y="390">history</text>
+  <text class="text" x="1296" y="422">retained_context</text>
+  <text class="text" x="1296" y="454">guardian_history</text>
+  <text class="text" x="1296" y="486">reference_context_item</text>
+  <text class="text" x="1296" y="518">world_state_baseline</text>
+
+  <path class="reverse" d="M650 775 C760 720 790 610 820 560"/>
+  <path class="reverse" d="M650 548 C760 490 790 350 820 290"/>
+  <path class="forward" d="M1180 560 C1225 540 1240 500 1260 465"/>
+  <path class="arrow" d="M1180 290 C1230 300 1245 350 1260 395"/>
+
+  <text class="small" x="770" y="830">rollback 会修改有效 user-turn 边界；legacy checkpoint 没有 replacement_history 时会降级 rebuild。</text>
+</svg>

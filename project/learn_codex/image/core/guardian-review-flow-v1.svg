@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1000" viewBox="0 0 1700 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Guardian 自动审查流程</title>
+  <desc id="desc">展示待审批工具请求如何构造成 Guardian 证据，进入隔离 review session，输出结构化 assessment 并返回审批决策。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+    <filter id="shadow" x="-6%" y="-8%" width="112%" height="124%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 40px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .sub { font: 400 18px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .box { fill: #ffffff; stroke-width: 2; filter: url(#shadow); }
+      .risk { fill: #fff1f2; stroke: #be123c; stroke-width: 2; filter: url(#shadow); }
+      .review { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; filter: url(#shadow); }
+      .ok { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2; filter: url(#shadow); }
+      .label { font: 800 22px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .text { font: 500 16px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .small { font: 500 14px Inter, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #64748b; }
+      .arrow { fill: none; stroke: #475569; stroke-width: 2.4; marker-end: url(#arrow); stroke-linecap: round; stroke-linejoin: round; }
+      .fail { fill: none; stroke: #be123c; stroke-width: 2.4; marker-end: url(#arrow); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 7; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1700" height="1000"/>
+  <text class="title" x="80" y="76">Guardian 自动审查流程</text>
+  <text class="sub" x="82" y="112">Guardian 是审批 reviewer：它看证据和动作，输出结构化 allow / deny，失败时不默认放行。</text>
+
+  <rect class="box" x="80" y="190" width="270" height="170" rx="18" stroke="#2563eb"/>
+  <text class="label" x="112" y="240">工具请求</text>
+  <text class="text" x="112" y="280">exec / patch / MCP</text>
+  <text class="text" x="112" y="312">network / permissions</text>
+
+  <rect class="risk" x="450" y="190" width="310" height="170" rx="18"/>
+  <text class="label" x="482" y="240">GuardianApprovalRequest</text>
+  <text class="text" x="482" y="280">统一 action JSON</text>
+  <text class="text" x="482" y="312">截断过大字段</text>
+
+  <rect class="box" x="860" y="160" width="350" height="230" rx="18" stroke="#0891b2"/>
+  <text class="label" x="894" y="210">Prompt evidence</text>
+  <text class="text" x="894" y="250">authorization</text>
+  <text class="text" x="894" y="282">bounded transcript</text>
+  <text class="text" x="894" y="314">retry reason</text>
+  <text class="text" x="894" y="346">planned action</text>
+
+  <rect class="review" x="1320" y="150" width="300" height="250" rx="20"/>
+  <text class="label" x="1354" y="205">Review Session</text>
+  <text class="text" x="1354" y="247">trunk 可复用</text>
+  <text class="text" x="1354" y="279">忙时 ephemeral fork</text>
+  <text class="text" x="1354" y="311">禁用工具扩展</text>
+  <text class="text" x="1354" y="343">deadline / cancel</text>
+
+  <rect class="ok" x="870" y="560" width="340" height="180" rx="18"/>
+  <text class="label" x="904" y="610">GuardianAssessment</text>
+  <text class="text" x="904" y="650">risk_level</text>
+  <text class="text" x="904" y="682">user_authorization</text>
+  <text class="text" x="904" y="714">outcome + rationale</text>
+
+  <rect class="box" x="450" y="570" width="310" height="170" rx="18" stroke="#16a34a"/>
+  <text class="label" x="482" y="620">ReviewDecision</text>
+  <text class="text" x="482" y="660">Approved -> 执行</text>
+  <text class="text" x="482" y="692">Denied -> 告诉模型</text>
+
+  <rect class="risk" x="80" y="570" width="270" height="170" rx="18"/>
+  <text class="label" x="112" y="620">Fail closed</text>
+  <text class="text" x="112" y="660">timeout / parse error</text>
+  <text class="text" x="112" y="692">session failure / cancel</text>
+
+  <path class="arrow" d="M350 275 H450"/>
+  <path class="arrow" d="M760 275 H860"/>
+  <path class="arrow" d="M1210 275 H1320"/>
+  <path class="arrow" d="M1470 400 C1470 520 1270 640 1210 650"/>
+  <path class="arrow" d="M870 650 H760"/>
+  <path class="fail" d="M870 705 C650 820 260 820 215 740"/>
+  <path class="arrow" d="M450 655 H350"/>
+  <text class="small" x="450" y="820">拒绝熔断：同一 turn 内连续或近期 denial 过多时，GuardianRejectionCircuitBreaker 可中断当前 turn。</text>
+</svg>

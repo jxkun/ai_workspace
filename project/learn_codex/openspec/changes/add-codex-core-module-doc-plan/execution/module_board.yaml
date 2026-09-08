@@ -1,0 +1,91 @@
+task: add-codex-core-module-doc-plan
+backend: openspec
+current_phase: merge
+round: 1
+max_rounds: 10
+round_no_progress: 0
+modules:
+  - id: M01
+    source_task: 2.1-2.3
+    name: core-source-survey
+    kind: analysis
+    status: done
+    owner: Explorer
+    reviewer: Master
+    depends_on: []
+    impact_on: [M02]
+    active_issue: null
+    files:
+      - repo/codex/codex-rs/core/src/lib.rs
+      - repo/codex/codex-rs/core/Cargo.toml
+      - repo/codex/codex-rs/core/src/
+    last_update: 2026-09-07 14:18:00
+    task_id: 01a07a89-56ea-7302-a272-a9e4f6faea52
+    launched_at: 2026-09-07 14:09:00
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M02
+    source_task: 3.1-3.4
+    name: core-doc-plan
+    kind: document
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: [M01]
+    impact_on: [M03, M04]
+    active_issue: null
+    files:
+      - docs/core/README.md
+    last_update: 2026-09-07 14:18:00
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M03
+    source_task: 4.1-4.3
+    name: core-visual-map
+    kind: document
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: [M02]
+    impact_on: [M04]
+    active_issue: null
+    files:
+      - image/core/codex-core-module-map-v1.svg
+      - image/core/README.md
+    last_update: 2026-09-07 14:18:00
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M04
+    source_task: 5.1-5.3
+    name: validation
+    kind: test
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: [M02, M03]
+    impact_on: []
+    active_issue: null
+    files:
+      - docs/index.md
+      - openspec/changes/add-codex-core-module-doc-plan/
+    last_update: 2026-09-07 14:18:00
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0

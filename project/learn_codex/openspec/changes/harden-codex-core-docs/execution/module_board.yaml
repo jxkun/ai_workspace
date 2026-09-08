@@ -1,0 +1,130 @@
+task: harden-codex-core-docs
+backend: openspec
+current_phase: merge
+round: 1
+max_rounds: 10
+round_no_progress: 0
+modules:
+  - id: M01
+    source_task: "5.1"
+    name: execution-state-and-truth-source-refresh
+    kind: document
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: []
+    impact_on: [M02a, M02b, M03, M04]
+    active_issue: null
+    files:
+      - openspec/changes/harden-codex-core-docs/tasks.md
+      - openspec/changes/harden-codex-core-docs/execution/intent.md
+      - openspec/changes/harden-codex-core-docs/execution/module_board.yaml
+      - openspec/changes/harden-codex-core-docs/execution/decisions.md
+      - openspec/changes/harden-codex-core-docs/execution/journal.md
+    last_update: "2026-09-08 11:00:00"
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M02a
+    source_task: "5.2"
+    name: core-docs-00-07-hardening
+    kind: document
+    status: done
+    owner: Coder
+    reviewer: Reviewer
+    depends_on: [M01]
+    impact_on: [M04]
+    active_issue: null
+    files:
+      - docs/core/00-core-map.md
+      - docs/core/01-thread-lifecycle.md
+      - docs/core/02-session-turn-loop.md
+      - docs/core/03-context-world-state.md
+      - docs/core/04-tool-runtime.md
+      - docs/core/05-exec-shell.md
+      - docs/core/06-safety-sandbox-approval.md
+      - docs/core/07-apply-patch.md
+    last_update: "2026-09-08 11:19:00"
+    task_id: 01a07ef4-0ded-7a41-8dcd-6877292293e5
+    launched_at: "2026-09-08 10:57:00"
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M02b
+    source_task: "5.3"
+    name: core-docs-08-15-and-index-hardening
+    kind: document
+    status: done
+    owner: Coder
+    reviewer: Reviewer
+    depends_on: [M01]
+    impact_on: [M04]
+    active_issue: null
+    files:
+      - docs/core/08-config-env-model-client.md
+      - docs/core/09-extensions-inside-core.md
+      - docs/core/10-agents-and-spawn.md
+      - docs/core/11-rollout-compaction-resume.md
+      - docs/core/12-guardian-review-attestation.md
+      - docs/core/13-realtime-apps-images.md
+      - docs/core/14-observability-utilities.md
+      - docs/core/15-core-code-evidence.md
+      - docs/core/README.md
+    last_update: "2026-09-08 11:19:00"
+    task_id: 01a07ef4-0e2a-7f03-aa00-5ce39f87da84
+    launched_at: "2026-09-08 10:57:00"
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M03
+    source_task: "5.4"
+    name: source-study-docs-review
+    kind: plan-review
+    status: done
+    owner: Reviewer
+    reviewer: Master
+    depends_on: []
+    impact_on: [M02a, M02b, M04]
+    active_issue: null
+    files:
+      - docs/core
+      - scripts/check_core_docs.py
+      - openspec/changes/harden-codex-core-docs
+    last_update: "2026-09-08 11:19:00"
+    task_id: 01a07ef4-10c8-77b3-aa77-c38481234664
+    launched_at: "2026-09-08 10:57:00"
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: M04
+    source_task: "5.5"
+    name: validation-and-openspec-closeout
+    kind: test
+    status: done
+    owner: Master
+    reviewer: Reviewer
+    depends_on: [M02a, M02b, M03]
+    impact_on: []
+    active_issue: null
+    files:
+      - scripts/check_core_docs.py
+      - docs/core
+      - openspec/changes/harden-codex-core-docs/tasks.md
+    last_update: "2026-09-08 11:20:00"
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0

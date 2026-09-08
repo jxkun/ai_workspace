@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Codex Harness 学习路线全景</title>
+  <desc id="desc">从源码基线到入口、运行循环、工具沙箱、协议事件、状态记忆、扩展点和案例实验的七阶段学习路线图。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L12,7 L2,12 Z" fill="#64748b"/>
+    </marker>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 44px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 20px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+      .card { fill: #ffffff; stroke-width: 2; filter: url(#cardShadow); }
+      .stage { font: 700 18px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #ffffff; }
+      .card-title { font: 700 24px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .card-text { font: 400 17px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+      .hint { font: 600 18px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+      .connector { fill: none; stroke: #64748b; stroke-width: 3; marker-end: url(#arrow); stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="900"/>
+  <text class="title" x="96" y="84">Codex Harness 学习路线全景</text>
+  <text class="subtitle" x="98" y="122">先建立地图，再跟踪一次 turn，最后进入工具、安全、状态和扩展点。</text>
+
+  <g transform="translate(86 176)">
+    <path class="connector" d="M168 112 C210 112 212 112 254 112"/>
+    <path class="connector" d="M428 112 C470 112 472 112 514 112"/>
+    <path class="connector" d="M688 112 C730 112 732 112 774 112"/>
+    <path class="connector" d="M948 112 C1004 112 1014 184 960 214 C918 238 878 244 818 244"/>
+    <path class="connector" d="M650 244 C608 244 606 244 564 244"/>
+    <path class="connector" d="M396 244 C354 244 352 244 310 244"/>
+
+    <g>
+      <rect class="card" x="0" y="0" width="168" height="156" rx="18" stroke="#2563eb"/>
+      <circle cx="28" cy="28" r="22" fill="#2563eb"/>
+      <text class="stage" x="21" y="35">0</text>
+      <text class="card-title" x="24" y="74">源码基线</text>
+      <text class="card-text" x="24" y="106">确认 commit</text>
+      <text class="card-text" x="24" y="132">读 Cargo workspace</text>
+    </g>
+    <g transform="translate(260 0)">
+      <rect class="card" x="0" y="0" width="168" height="156" rx="18" stroke="#059669"/>
+      <circle cx="28" cy="28" r="22" fill="#059669"/>
+      <text class="stage" x="22" y="35">1</text>
+      <text class="card-title" x="24" y="74">入口地图</text>
+      <text class="card-text" x="24" y="106">CLI / TUI</text>
+      <text class="card-text" x="24" y="132">app-server</text>
+    </g>
+    <g transform="translate(520 0)">
+      <rect class="card" x="0" y="0" width="168" height="156" rx="18" stroke="#d97706"/>
+      <circle cx="28" cy="28" r="22" fill="#d97706"/>
+      <text class="stage" x="21" y="35">2</text>
+      <text class="card-title" x="24" y="74">Runtime</text>
+      <text class="card-text" x="24" y="106">Session / Turn</text>
+      <text class="card-text" x="24" y="132">模型与事件</text>
+    </g>
+    <g transform="translate(780 0)">
+      <rect class="card" x="0" y="0" width="168" height="156" rx="18" stroke="#7c3aed"/>
+      <circle cx="28" cy="28" r="22" fill="#7c3aed"/>
+      <text class="stage" x="21" y="35">3</text>
+      <text class="card-title" x="24" y="74">工具安全</text>
+      <text class="card-text" x="24" y="106">Tools / Sandbox</text>
+      <text class="card-text" x="24" y="132">Approval / Patch</text>
+    </g>
+    <g transform="translate(780 264)">
+      <rect class="card" x="0" y="0" width="168" height="156" rx="18" stroke="#0891b2"/>
+      <circle cx="28" cy="28" r="22" fill="#0891b2"/>
+      <text class="stage" x="21" y="35">4</text>
+      <text class="card-title" x="24" y="74">协议事件</text>
+      <text class="card-text" x="24" y="106">protocol types</text>
+      <text class="card-text" x="24" y="132">UI / server events</text>
+    </g>
+    <g transform="translate(520 264)">
+      <rect class="card" x="0" y="0" width="168" height="156" rx="18" stroke="#4f46e5"/>
+      <circle cx="28" cy="28" r="22" fill="#4f46e5"/>
+      <text class="stage" x="21" y="35">5</text>
+      <text class="card-title" x="24" y="74">状态记忆</text>
+      <text class="card-text" x="24" y="106">Rollout / Thread</text>
+      <text class="card-text" x="24" y="132">Context / Memory</text>
+    </g>
+    <g transform="translate(260 264)">
+      <rect class="card" x="0" y="0" width="168" height="156" rx="18" stroke="#be123c"/>
+      <circle cx="28" cy="28" r="22" fill="#be123c"/>
+      <text class="stage" x="21" y="35">6</text>
+      <text class="card-title" x="24" y="74">扩展点</text>
+      <text class="card-text" x="24" y="106">Skills / Plugins</text>
+      <text class="card-text" x="24" y="132">MCP / Hooks</text>
+    </g>
+    <g transform="translate(0 264)">
+      <rect class="card" x="0" y="0" width="168" height="156" rx="18" stroke="#0f172a"/>
+      <circle cx="28" cy="28" r="22" fill="#0f172a"/>
+      <text class="stage" x="21" y="35">7</text>
+      <text class="card-title" x="24" y="74">案例实验</text>
+      <text class="card-text" x="24" y="106">最小复现</text>
+      <text class="card-text" x="24" y="132">反证理解</text>
+    </g>
+  </g>
+
+  <g transform="translate(1080 190)">
+    <rect x="0" y="0" width="400" height="430" rx="22" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#cardShadow)"/>
+    <text class="hint" x="34" y="54">每一阶段都要交付</text>
+    <line x1="34" y1="74" x2="366" y2="74" stroke="#e2e8f0" stroke-width="2"/>
+    <text class="card-text" x="34" y="118">1. 源码入口和阅读路径</text>
+    <text class="card-text" x="34" y="164">2. 关键问题和边界</text>
+    <text class="card-text" x="34" y="210">3. Markdown 分析正文</text>
+    <text class="card-text" x="34" y="256">4. 生成图片资产</text>
+    <text class="card-text" x="34" y="302">5. 待验证项和后续 slots</text>
+    <text class="card-text" x="34" y="348">6. 完成标准自查</text>
+  </g>
+
+  <text class="subtitle" x="100" y="782">原则：理解优先于实验；图片承载图示；源码锚点支撑结论。</text>
+</svg>

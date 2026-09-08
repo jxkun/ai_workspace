@@ -1,0 +1,33 @@
+# Local execution/cache
+.fast-agent/
+.DS_Store
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Downloaded archives and temporary extraction
+*.tar.gz
+*.tgz
+*.zip
+*.zst
+*.tmp
+
+# Upstream source build artifacts
+repo/codex/
+!repo/README.md
+repo/codex/target/
+repo/codex/node_modules/
+repo/codex/.turbo/
+repo/codex/.next/
+
+# Python / notebook caches
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Generated local reports
+coverage/
+dist/
+build/

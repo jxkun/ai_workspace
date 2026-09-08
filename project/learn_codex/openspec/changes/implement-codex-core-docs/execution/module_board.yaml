@@ -1,0 +1,130 @@
+task: implement-codex-core-docs
+backend: openspec
+current_phase: implementation
+round: 1
+max_rounds: 10
+round_no_progress: 0
+modules:
+  - id: CORE-A
+    source_task: 2.1-2.5,3.1
+    name: core-docs-00-04
+    kind: document
+    status: in_progress
+    owner: Coder
+    reviewer: Reviewer
+    depends_on: []
+    impact_on: [CORE-V]
+    active_issue: null
+    files:
+      - docs/core/00-core-map.md
+      - docs/core/01-thread-lifecycle.md
+      - docs/core/02-session-turn-loop.md
+      - docs/core/03-context-world-state.md
+      - docs/core/04-tool-runtime.md
+      - image/core/core-crate-boundary-v1.svg
+      - image/core/thread-lifecycle-v1.svg
+      - image/core/session-turn-loop-v1.svg
+      - image/core/task-types-v1.svg
+      - image/core/context-world-state-v1.svg
+      - image/core/context-fragment-lifecycle-v1.svg
+      - image/core/tool-runtime-v1.svg
+      - image/core/tool-router-handler-v1.svg
+    last_update: 2026-09-07 14:26:00
+    task_id: 01a07a98-d1d1-71b0-8129-a50cb883c1e6
+    launched_at: 2026-09-07 14:26:00
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: CORE-B
+    source_task: 2.6-2.10,3.1
+    name: core-docs-05-09
+    kind: document
+    status: in_progress
+    owner: Coder
+    reviewer: Reviewer
+    depends_on: []
+    impact_on: [CORE-V]
+    active_issue: null
+    files:
+      - docs/core/05-exec-shell.md
+      - docs/core/06-safety-sandbox-approval.md
+      - docs/core/07-apply-patch.md
+      - docs/core/08-config-env-model-client.md
+      - docs/core/09-extensions-inside-core.md
+      - image/core/unified-exec-lifecycle-v1.svg
+      - image/core/exec-output-buffer-v1.svg
+      - image/core/safety-approval-decision-v1.svg
+      - image/core/sandbox-policy-boundary-v1.svg
+      - image/core/apply-patch-flow-v1.svg
+      - image/core/patch-safety-route-v1.svg
+      - image/core/config-to-turn-v1.svg
+      - image/core/model-client-request-v1.svg
+      - image/core/core-extension-surfaces-v1.svg
+      - image/core/mcp-tool-exposure-v1.svg
+    last_update: 2026-09-07 14:26:00
+    task_id: 01a07a98-d237-7611-bb33-8192dee17a01
+    launched_at: 2026-09-07 14:26:00
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: CORE-C
+    source_task: 2.11-2.15,3.1
+    name: core-docs-10-14
+    kind: document
+    status: in_progress
+    owner: Coder
+    reviewer: Reviewer
+    depends_on: []
+    impact_on: [CORE-V]
+    active_issue: null
+    files:
+      - docs/core/10-agents-and-spawn.md
+      - docs/core/11-rollout-compaction-resume.md
+      - docs/core/12-guardian-review-attestation.md
+      - docs/core/13-realtime-apps-images.md
+      - docs/core/14-observability-utilities.md
+      - image/core/multi-agent-control-v1.svg
+      - image/core/spawn-agent-lifecycle-v1.svg
+      - image/core/rollout-compaction-resume-v1.svg
+      - image/core/thread-reconstruction-v1.svg
+      - image/core/guardian-review-flow-v1.svg
+      - image/core/attestation-boundary-v1.svg
+      - image/core/realtime-context-flow-v1.svg
+      - image/core/image-preparation-v1.svg
+      - image/core/turn-observability-v1.svg
+      - image/core/supporting-utils-map-v1.svg
+    last_update: 2026-09-07 14:26:00
+    task_id: 01a07a98-d572-7241-b5e9-c9789d079a76
+    launched_at: 2026-09-07 14:26:00
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0
+  - id: CORE-V
+    source_task: 4.1-4.4
+    name: validation-and-index
+    kind: test
+    status: todo
+    owner: Master
+    reviewer: Reviewer
+    depends_on: [CORE-A, CORE-B, CORE-C]
+    impact_on: []
+    active_issue: null
+    files:
+      - docs/core/README.md
+      - docs/index.md
+      - image/core/README.md
+      - openspec/changes/implement-codex-core-docs/
+    last_update: 2026-09-07 14:26:00
+    task_id: null
+    launched_at: null
+    last_progress_seq: 0
+    last_progress_at: null
+    no_progress_polls: 0
+    retry_count: 0
+    rework_rounds: 0

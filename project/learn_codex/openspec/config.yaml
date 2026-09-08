@@ -1,0 +1,39 @@
+schema: spec-driven
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+# Add your tech stack, conventions, style guides, domain knowledge, etc.
+# Example:
+#   context: |
+#     Tech stack: TypeScript, React, Node.js
+#     We use conventional commits
+#     Domain: e-commerce platform
+context: |
+  Project: Codex harness learning and analysis workspace.
+  Language: write project docs in Chinese by default.
+  Source truth: analyze the local `repo/codex/` snapshot and record its commit or release in `docs/source-snapshot.md`.
+  Documentation: Markdown files under `docs/` carry text analysis; every implementation claim needs source anchors when possible.
+  Diagram constraint: flow, architecture, state, and sequence diagrams MUST be generated image files under `image/`; Mermaid, PlantUML, or ASCII diagrams are not final diagram artifacts.
+  Diagram quality: prefer SVG vector images for final diagrams; PNG is acceptable only when exported at high resolution with anti-aliased text and lines. Do not ship pixelated, jagged, blurry, crowded, or low-legibility diagrams.
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
+rules:
+  proposal:
+    - Keep the scope focused on setting up the learning workspace unless the user explicitly asks for deeper analysis.
+    - Include the generated-image and image-quality constraints when diagrams are in scope.
+  design:
+    - Record directory ownership and source snapshot strategy.
+    - Keep future Codex analysis stages separate from current initialization work.
+  specs:
+    - Use SHALL or MUST for testable requirements.
+    - Include at least one requirement covering generated image assets and visual quality.
+  tasks:
+    - Make each task verifiable by file existence, OpenSpec validation, or source snapshot checks.
