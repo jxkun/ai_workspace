@@ -10,7 +10,7 @@
 - 能说明 `Session::reconstruct_history_from_rollout` 为什么要反向扫描 rollout。
 - 能区分 thread store、rollout file、context reconstruction、world state baseline 的职责。
 
-![Rollout compaction resume](../../image/core/rollout-compaction-resume-v1.svg)
+![Rollout compaction resume](../../image/core/rollout-compaction-resume-v1.png)
 
 这张开篇综合图先把本文的时间线压成一个全局模型：普通 turn 持续追加 rollout，compaction 把长历史替换成 checkpoint，resume/fork 先从 checkpoint 取基座再正向重放后续事件，rollback、world state baseline 和预算提醒都挂在这条链路旁边。后文的 `CompactedHistoryMetadata`、`replace_compacted_history`、`reconstruct_history_from_rollout` 和 fork truncation 代码片段分别证明 checkpoint 结构、历史替换、恢复算法和裁剪边界。
 
@@ -349,7 +349,7 @@ compaction 可能来自用户手动请求，也可能来自自动上下文窗口
 
 ### 3. 恢复或 fork 时重建历史
 
-![Thread reconstruction](../../image/core/thread-reconstruction-v1.svg)
+![Thread reconstruction](../../image/core/thread-reconstruction-v1.png)
 
 这张重建图要从“反向扫描最新有效 checkpoint”读起，再顺着“正向重放 surviving suffix”看 `ResponseItem`、`InterAgentCommunication` 和 `WorldState` 如何回到 live context。
 

@@ -2,7 +2,7 @@
 
 ## 读完你应掌握什么
 
-![Safety 与审批判定链](../../image/core/safety-approval-decision-v1.svg)
+![Safety 与审批判定链](../../image/core/safety-approval-decision-v1.png)
 
 开篇全局图：这张图先给出本文的安全判定链：配置和 exec policy 先给出执行要求，`ToolOrchestrator` 把要求转成 approval、sandbox attempt 或拒绝，运行期网络访问再通过 `DeferredNetworkApproval` 独立处理，patch 则由 `assess_patch_safety` 走结构化路径判断。对应源码入口是 `repo/codex/codex-rs/core/src/config/mod.rs`、`repo/codex/codex-rs/core/src/exec_policy.rs`、`repo/codex/codex-rs/core/src/tools/orchestrator.rs`、`repo/codex/codex-rs/core/src/tools/sandboxing.rs`、`repo/codex/codex-rs/core/src/tools/network_approval.rs` 和 `repo/codex/codex-rs/core/src/safety.rs`。
 
@@ -181,7 +181,7 @@ if is_write_patch_constrained_to_writable_paths(action, file_system_sandbox_poli
 
 ## 安全决策矩阵
 
-![Safety 与审批判定链](../../image/core/safety-approval-decision-v1.svg)
+![Safety 与审批判定链](../../image/core/safety-approval-decision-v1.png)
 
 这张图从配置、exec policy、approval、sandbox attempt 到网络审批展示安全判定链。下表把图中的节点拆成可审计条件，便于判断某条命令为什么执行、审批、重试或被拒绝。
 
@@ -202,7 +202,7 @@ if is_write_patch_constrained_to_writable_paths(action, file_system_sandbox_poli
 
 ## 主流程
 
-![Safety 与审批判定链](../../image/core/safety-approval-decision-v1.svg)
+![Safety 与审批判定链](../../image/core/safety-approval-decision-v1.png)
 
 这张图在主流程中作为安全执行链复用：先看配置和 exec policy，再看 orchestrator 如何处理审批、sandbox attempt、网络审批和拒绝/重试。无需代码片段：主流程总述依赖的关键状态定义和分支实现已放在相邻小节。
 
@@ -277,7 +277,7 @@ pub struct Config {
 
 ### 4. sandbox 边界真正落在执行请求上
 
-![Sandbox 策略边界](../../image/core/sandbox-policy-boundary-v1.svg)
+![Sandbox 策略边界](../../image/core/sandbox-policy-boundary-v1.png)
 
 这张 sandbox 边界图要从 `PermissionProfile` 和 workspace roots 读起，重点看文件系统 sandbox、Windows sandbox、deny-read 和 executor-managed sandbox 如何共同决定一次执行尝试能触碰哪些资源。
 
@@ -345,7 +345,7 @@ impl DeferredNetworkApproval {
 
 ## 失败模式与边界条件
 
-![Sandbox 策略边界](../../image/core/sandbox-policy-boundary-v1.svg)
+![Sandbox 策略边界](../../image/core/sandbox-policy-boundary-v1.png)
 
 这张 sandbox 边界图用于阅读下面的失败列表：拒绝、重试和升级都必须回到 permission profile、workspace roots、deny-read、Windows sandbox、managed network 这些执行边界。无需代码片段：本节逐项映射前文 `ExecApprovalRequirement`、sandbox override、network approval 和 patch safety 证据。
 

@@ -4,7 +4,7 @@
 
 ## 读完你应掌握什么
 
-![Context 与 WorldState](../../image/core/context-world-state-v1.svg)
+![Context 与 WorldState](../../image/core/context-world-state-v1.png)
 
 开篇全局图：这张图先把本文的心智模型放在最前面：不同来源先变成 `ContextualUserFragment`，`WorldStateSection` 用 snapshot/diff 表示模型可见状态，`Session` 在 step 边界把渲染结果写入 history 与 rollout。对应源码入口是 `repo/codex/codex-rs/context-fragments/src/fragment.rs`、`repo/codex/codex-rs/core/src/context/world_state/mod.rs`、`repo/codex/codex-rs/core/src/session/mod.rs` 和 `repo/codex/codex-rs/core/src/session/step_context.rs`。
 
@@ -58,7 +58,7 @@ Agent 不只需要用户刚输入的一句话。它还需要知道：
 
 ## WorldState Section 矩阵
 
-![Context 与 WorldState](../../image/core/context-world-state-v1.svg)
+![Context 与 WorldState](../../image/core/context-world-state-v1.png)
 
 这张图先看 context fragment 如何被组织成模型可见内容，再看 `WorldStateSection` 如何通过 snapshot/diff 参与后续 turn 和 rollout 恢复。下表中的每个 section 都对应图里的一个状态来源。
 
@@ -230,13 +230,13 @@ pub(crate) async fn record_step_world_state_if_changed(
 
 ## 主流程
 
-![Context 与 WorldState](../../image/core/context-world-state-v1.svg)
+![Context 与 WorldState](../../image/core/context-world-state-v1.png)
 
 这张图在主流程中作为状态流图复用：先看 fragment 渲染，再看 world state diff，最后看 session 在 step 边界记录模型可见项和 rollout patch。无需代码片段：对应实现已在上一节三个代码证据中展示。
 
 ### 1. 各来源先变成上下文片段
 
-![Context Fragment 生命周期](../../image/core/context-fragment-lifecycle-v1.svg)
+![Context Fragment 生命周期](../../image/core/context-fragment-lifecycle-v1.png)
 
 这张片段生命周期图要从“来源进入 fragment”读起，再看 marker、body、history 识别和 retained context 如何把一段上下文从当前 step 延续到后续 turn。
 
@@ -268,7 +268,7 @@ context manager 负责把历史输入整理成模型可消费形态。它要处�
 
 ## 失败模式与边界条件
 
-![Context Fragment 生命周期](../../image/core/context-fragment-lifecycle-v1.svg)
+![Context Fragment 生命周期](../../image/core/context-fragment-lifecycle-v1.png)
 
 本节复用 fragment 生命周期图定位失败来源：增长、重复注入、来源混淆和恢复缺失都发生在 fragment 渲染、history/retained 匹配或 world-state diff 边界。无需代码片段：`ContextualUserFragment` 和 `WorldStateSection` 定义已经给出这些边界的源码证据。
 

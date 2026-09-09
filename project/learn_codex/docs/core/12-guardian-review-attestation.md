@@ -10,7 +10,7 @@
 - 知道 review session 为什么要锁定配置、禁用无关能力、fail closed。
 - 能说明 `AttestationProvider` 是 host 集成边界，不是 Guardian 的替代品。
 
-![Guardian review flow](../../image/core/guardian-review-flow-v1.svg)
+![Guardian review flow](../../image/core/guardian-review-flow-v1.png)
 
 这张开篇综合图先建立 Guardian 的完整审查路径：工具 approval 进入 `GuardianApprovalRequest`，prompt 构造把 transcript、authorization、trusted input 和 planned action 分区，隔离 review session 输出结构化 assessment，最终回到 allow/deny/fail-closed 决策。Attestation 只在模型请求侧补 header，后文用独立边界图说明它不参与工具审查。
 
@@ -400,7 +400,7 @@ full 模式用于首次审查或 cursor 失效；delta 模式只追加上次审�
 
 ### 6. Attestation 在请求侧补充信任信号
 
-![Attestation boundary](../../image/core/attestation-boundary-v1.svg)
+![Attestation boundary](../../image/core/attestation-boundary-v1.png)
 
 这张边界图只看模型请求侧：`AttestationProvider` 产出 `x-oai-attestation` header，但不参与工具 approval、sandbox 或 Guardian assessment。
 

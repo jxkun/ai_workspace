@@ -10,7 +10,7 @@
 - 知道 `stream_events_utils` 如何把模型 stream item 变成 turn item、持久化和工具执行。
 - 能理解命令 canonicalization、current time provider、memory usage metric 这些 utility 为什么属于 core 支撑能力。
 
-![Turn observability](../../image/core/turn-observability-v1.svg)
+![Turn observability](../../image/core/turn-observability-v1.png)
 
 这张开篇综合图把本文的支撑链路放在一次 turn 里看：`TurnMetadataState` 生成模型/MCP/analytics 共用的身份标签，`TurnTimingState` 记录用户感知延迟和 profile phase，`stream_events_utils` 把模型 stream item 变成事件、history 和工具执行，`TurnDiffTracker` 用 apply_patch delta 维护本轮净 diff。后文的 metadata、timing 和 diff tracker 片段分别证明这些观测对象的字段形状和失效边界。
 
@@ -342,7 +342,7 @@ metadata 可以晚到：git enrichment 是后台任务；memory request 最多�
 
 ### 5. supporting utilities 服务安全和可复现
 
-![Supporting utils map](../../image/core/supporting-utils-map-v1.svg)
+![Supporting utils map](../../image/core/supporting-utils-map-v1.png)
 
 这张支撑工具图要按“主流程外围能力”来看：命令规范化、时间源、memory usage、JSON/path utils 都不接管 turn，只给安全、审计和可复现性提供稳定输入。
 无需代码片段：这些 utility 是主证据之外的窄边界补充，读者需要深挖时再按源码锚点进入 `command_canonicalization.rs`、`current_time.rs`、`memory_usage.rs` 和 `utils/`。

@@ -4,7 +4,7 @@
 
 ## 读完你应掌握什么
 
-![Codex core 模块地图](../../image/core/codex-core-module-map-v1.svg)
+![Codex core 模块地图](../../image/core/codex-core-module-map-v1.png)
 
 开篇全局图：这张图先给出 `codex-core` 的系统位置、核心实体和主流程边界。读图时从外部入口进入 `ThreadManager` / `CodexThread`，再沿 `Session -> Turn -> Step -> ToolRuntime -> Event/Rollout` 的主轴看，最后把 context、safety、extensions 当成横切能力叠到主轴上。对应源码入口是 `repo/codex/codex-rs/core/src/lib.rs`、`repo/codex/codex-rs/core/src/thread_manager.rs`、`repo/codex/codex-rs/core/src/codex_thread.rs` 和 `repo/codex/codex-rs/core/src/session/turn.rs`。
 
@@ -79,7 +79,7 @@ pub use thread_manager::ThreadShutdownReport;
 
 这段说明 `codex-core` 的对外边界不是整个 `core/src` 目录，而是经过 `pub use` 收口的一组稳定对象。入口层主要拿到 `ThreadManager`、`CodexThread`、启动/恢复参数和少量状态快照；`session` 虽然是运行主体，但只通过受控类型暴露必要信息。
 
-![Core crate 边界](../../image/core/core-crate-boundary-v1.svg)
+![Core crate 边界](../../image/core/core-crate-boundary-v1.png)
 
 这张图对应上面的 `lib.rs` 证据：public API 通过 `pub use` 汇出，crate 内部模块继续服务 session、tools、context、config 和扩展系统，入口层不需要直接依赖这些内部文件。
 
@@ -174,7 +174,7 @@ loop {
 
 ## 主流程
 
-![Codex core 模块地图](../../image/core/codex-core-module-map-v1.svg)
+![Codex core 模块地图](../../image/core/codex-core-module-map-v1.png)
 
 这张总览图要和下面五段主流程一起读：外部入口先进入 thread 生命周期，再进入 session/turn 主轴；工具、安全、context、rollout 和扩展能力围绕这条主轴提供执行、约束和恢复能力。更细的 session、工具、context 和 rollout 流程图会在后续专题就近展开。本节无需新增代码片段；流程对应的 public API、`ThreadManagerState`、sampling request 和 `WorldStateSection` 已在上一节以 Source/Line range 固定。
 
@@ -198,7 +198,7 @@ CLI、TUI、app-server 不直接实现 agent 主循环。它们负责解析参�
 
 ### 4. 工具和安全横切主流程
 
-![Tool runtime](../../image/core/tool-runtime-v1.svg)
+![Tool runtime](../../image/core/tool-runtime-v1.png)
 
 这张工具运行图在总览层只看横切关系：模型输出 tool call 后，core 先经过 router/handler，再进入统一执行外壳；安全审批和 sandbox 不是某个工具的私有逻辑，而是横跨 shell、patch、MCP 和 multi-agent 的公共路径。
 
@@ -208,7 +208,7 @@ CLI、TUI、app-server 不直接实现 agent 主循环。它们负责解析参�
 
 ### 5. 状态和扩展支撑长期运行
 
-![Context 与 WorldState](../../image/core/context-world-state-v1.svg)
+![Context 与 WorldState](../../image/core/context-world-state-v1.png)
 
 这张状态图在总览层用来串起 context/world state、rollout 和扩展能力：模型看到的环境、权限、插件、工具等不是散落在历史里的普通文本，而是可以 snapshot、diff 和恢复的结构化状态。
 
@@ -248,7 +248,7 @@ pub(crate) trait WorldStateSection: Send + Sync + 'static {
 
 ## 失败模式与边界条件
 
-![Safety 与审批判定链](../../image/core/safety-approval-decision-v1.svg)
+![Safety 与审批判定链](../../image/core/safety-approval-decision-v1.png)
 
 这张安全判定图用来定位下面失败模式中“入口绕过、工具失控、权限漂移”的共同风险：只要请求离开 thread/session 主轴，就会绕过统一的 approval、sandbox、context 和 rollout 记录。
 

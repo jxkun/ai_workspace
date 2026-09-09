@@ -8,7 +8,7 @@
 - 能追踪一次 MCP tool call 的审批、调用、结果清洗、事件发送和 telemetry。
 - 能设计一个插件系统，让外部能力能扩展上下文和工具，但不能绕过 core 的权限边界。
 
-![Core 扩展入口](../../image/core/core-extension-surfaces-v1.svg)
+![Core 扩展入口](../../image/core/core-extension-surfaces-v1.png)
 
 这张开篇综合图把 MCP server、Apps connector、plugin、skill、hook 和 extension tool 放回同一个 core 边界里：配置和插件先贡献能力，`Session` 在 step 级冻结 `McpBinding`，`ToolRouter` 再决定 direct/deferred/hidden 暴露，真正调用时仍经过审批、metadata、结果清洗和事件回写。后文的 `McpRuntimeProjection`、`append_mcp_tools` 和 `handle_mcp_tool_call` 片段分别对应图中的配置投影、工具曝光和调用审批三段。
 
@@ -238,7 +238,7 @@ pub struct McpManager {
 
 ### 3. MCP tool 进入 core tool registry
 
-![MCP 工具曝光与调用](../../image/core/mcp-tool-exposure-v1.svg)
+![MCP 工具曝光与调用](../../image/core/mcp-tool-exposure-v1.png)
 
 这张图对应 MCP tool 从 catalog、exposure policy、registry 到 approval/call/result 的路径，帮助区分 direct、deferred、hidden 和真正执行调用。
 

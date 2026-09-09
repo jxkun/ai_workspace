@@ -4,7 +4,7 @@
 
 ## 读完你应掌握什么
 
-![Thread lifecycle](../../image/core/thread-lifecycle-v1.svg)
+![Thread lifecycle](../../image/core/thread-lifecycle-v1.png)
 
 开篇全局图：这张图先把本文压缩成一个 thread 生命周期模型：入口只接触 `ThreadManager` 和 `CodexThread`，启动路径会把 config、history、environment、rollout 和 session 组装起来，恢复和 fork 则从持久化历史重新进入同一条运行边界。对应源码入口是 `repo/codex/codex-rs/core/src/thread_manager.rs`、`repo/codex/codex-rs/core/src/codex_thread.rs` 和 `repo/codex/codex-rs/core/src/session/session.rs`。
 
@@ -176,7 +176,7 @@ where
 
 ## 主流程
 
-![Thread lifecycle](../../image/core/thread-lifecycle-v1.svg)
+![Thread lifecycle](../../image/core/thread-lifecycle-v1.png)
 
 这张图先看上半段 start/resume/fork 入口，再看 `ThreadManager` 如何把 thread store、rollout、environment 和 `Session` 接成一个新的 `CodexThread`。下方事件出口对应 `CodexThread` 给 UI/CLI 暴露的稳定交互边界。无需代码片段：生命周期入口、句柄接口和恢复/fork 分支已在上一节用 Source/Line range 固定。
 
@@ -208,7 +208,7 @@ resume/fork 不是重新开始，而是从 thread store 和 rollout 里恢复历
 
 ## 失败模式与边界条件
 
-![Thread lifecycle](../../image/core/thread-lifecycle-v1.svg)
+![Thread lifecycle](../../image/core/thread-lifecycle-v1.png)
 
 本节复用 thread 生命周期图定位失败点：失败通常发生在 start/resume/fork 的历史来源、`CodexThread` 对外句柄、事件出口或 flush/shutdown 边界。无需代码片段：具体可复查上一节的 `resume_thread_from_rollout`、`fork_thread` 和 `CodexThread::submit` / `next_event` 片段。
 

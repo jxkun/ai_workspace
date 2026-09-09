@@ -4,7 +4,7 @@
 
 ## 读完你应掌握什么
 
-![Tool runtime](../../image/core/tool-runtime-v1.svg)
+![Tool runtime](../../image/core/tool-runtime-v1.png)
 
 开篇全局图：这张图先把本文压缩成工具调用流水线：模型看到的 tool spec 来自 `ToolRegistry`，调用时由 `ToolRouter` 找到 handler，`ToolInvocation` 绑定 session/step/source/payload，`ToolOrchestrator` 再统一接入 approval、sandbox、network approval 和 runtime。对应源码入口是 `repo/codex/codex-rs/core/src/tools/registry.rs`、`repo/codex/codex-rs/core/src/tools/router.rs`、`repo/codex/codex-rs/core/src/tools/context.rs` 和 `repo/codex/codex-rs/core/src/tools/orchestrator.rs`。
 
@@ -227,7 +227,7 @@ where
 
 ## 主流程
 
-![Tool runtime](../../image/core/tool-runtime-v1.svg)
+![Tool runtime](../../image/core/tool-runtime-v1.png)
 
 这张图展示模型 tool call 从 `ToolRouter` 进入 handler，再经过 `ToolOrchestrator`、runtime 和 tool output 回到下一次模型输入。下面的步骤按图中的执行顺序展开。无需代码片段：本节是对前一节三个代码证据的流程化复盘，具体实体和执行外壳已用 Source/Line range 固定。
 
@@ -239,7 +239,7 @@ core 启动或 step 创建时，会把内置工具、MCP 工具、动态工具�
 
 ### 2. 模型输出 tool call
 
-![Tool router handler](../../image/core/tool-router-handler-v1.svg)
+![Tool router handler](../../image/core/tool-router-handler-v1.png)
 
 这张 router/handler 图要从模型输出的 tool name 读起，再看 `ToolRouter` 如何定位 handler、构造 `ToolInvocation`，最后把结果包装回模型输入。
 
@@ -267,7 +267,7 @@ runtime 执行完成后，结果会被转换为 `ResponseInputItem` 或事件。
 
 ## 端到端 Trace
 
-![Tool router handler](../../image/core/tool-router-handler-v1.svg)
+![Tool router handler](../../image/core/tool-router-handler-v1.png)
 
 这张图在 trace 章节中作为路由图复用：表格从工具可见性走到模型发起调用、handler 解析和 runtime 执行，每一步都能映射到 router/handler/orchestrator 边界。无需代码片段：trace 表格引用的是前文 `ToolInvocation`、`ToolRegistry`、`ToolOrchestrator::run` 片段和对应源码锚点。
 
@@ -286,7 +286,7 @@ runtime 执行完成后，结果会被转换为 `ResponseInputItem` 或事件。
 
 ## 失败模式与边界条件
 
-![Safety 与审批判定链](../../image/core/safety-approval-decision-v1.svg)
+![Safety 与审批判定链](../../image/core/safety-approval-decision-v1.png)
 
 这张安全判定图用来读下面的失败模式：大多数工具失败不是 handler 内部 panic，而是在 routing、参数解析、approval、sandbox、network 或 output bound 中被结构化表达。无需代码片段：具体失败分支的安全实现放在 `06-safety-sandbox-approval.md`，本节只把它们映射回工具流水线。
 

@@ -2,7 +2,7 @@
 
 ## 读完你应掌握什么
 
-![Unified Exec 生命周期](../../image/core/unified-exec-lifecycle-v1.svg)
+![Unified Exec 生命周期](../../image/core/unified-exec-lifecycle-v1.png)
 
 开篇全局图：这张图先给出本文的命令执行模型：模型工具参数进入 handler，shell 文本被展开成 argv，`ToolOrchestrator` 决定 approval/sandbox，`UnifiedExecProcessManager` 启动或保留进程，输出通过 head/tail buffer 回到模型和事件流。对应源码入口是 `repo/codex/codex-rs/core/src/shell.rs`、`repo/codex/codex-rs/core/src/unified_exec/mod.rs`、`repo/codex/codex-rs/core/src/unified_exec/process_manager.rs` 和 `repo/codex/codex-rs/core/src/unified_exec/head_tail_buffer.rs`。
 
@@ -187,7 +187,7 @@ impl<const MAX_BYTES: usize> HeadTailBuffer<MAX_BYTES> {
 
 ## 主流程
 
-![Unified Exec 生命周期](../../image/core/unified-exec-lifecycle-v1.svg)
+![Unified Exec 生命周期](../../image/core/unified-exec-lifecycle-v1.png)
 
 这张图按 `tool args -> shell argv -> approval/sandbox -> process -> output buffer -> tool result` 阅读。下面 1 到 6 步分别展开参数解析、sandbox 执行、后台进程保留和后续 stdin。无需代码片段：主流程依赖的 shell argv、执行请求和输出 buffer 结构已在上一节贴近展示。
 
@@ -238,7 +238,7 @@ PowerShell 和 cmd 则走自己的参数规则。`UnifiedExecShellMode::ZshFork`
 
 ### 6. 输出如何返回给模型
 
-![Exec 输出缓冲模型](../../image/core/exec-output-buffer-v1.svg)
+![Exec 输出缓冲模型](../../image/core/exec-output-buffer-v1.png)
 
 这张输出缓冲图要从 head/tail 两段保留策略读起：开头保留命令上下文和早期错误，结尾保留最终摘要，中间大段日志用 omitted marker 表达。
 
@@ -248,7 +248,7 @@ PowerShell 和 cmd 则走自己的参数规则。`UnifiedExecShellMode::ZshFork`
 
 ## 失败模式与边界条件
 
-![Unified Exec 生命周期](../../image/core/unified-exec-lifecycle-v1.svg)
+![Unified Exec 生命周期](../../image/core/unified-exec-lifecycle-v1.png)
 
 本节复用 Unified Exec 生命周期图定位失败点：参数解析、approval/sandbox、进程启动、后台保留、stdin 和输出截断都是不同故障边界。无需代码片段：具体实现证据可回到上一节三个片段，以及 `repo/codex/codex-rs/core/src/unified_exec/process_manager.rs` 与 `repo/codex/codex-rs/core/src/exec.rs`。
 

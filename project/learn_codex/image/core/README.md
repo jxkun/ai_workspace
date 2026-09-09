@@ -2,6 +2,8 @@
 
 本目录用于存放 `codex-rs/core` 层分析相关图片。
 
+每张图同时保留 SVG 源文件和同名 PNG 预览文件。文档内嵌使用 PNG，避免部分 Markdown 渲染器无法展示 SVG；需要缩放或继续编辑时使用 SVG。
+
 - `codex-core-module-map-v1.svg`：core 层模块文档规划地图，当前推荐版本。
 - `core-crate-boundary-v1.svg`：core crate 对外边界。
 - `thread-lifecycle-v1.svg`：thread 创建、提交、事件、恢复生命周期。

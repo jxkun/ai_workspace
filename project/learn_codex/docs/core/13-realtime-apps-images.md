@@ -10,7 +10,7 @@
 - 知道 apps instruction 何时注入，以及为什么 app 等价于 apps MCP server 的一组工具。
 - 能说明图片在发送给模型前如何被处理、替换、降级和记录 metadata。
 
-![Realtime context flow](../../image/core/realtime-context-flow-v1.svg)
+![Realtime context flow](../../image/core/realtime-context-flow-v1.png)
 
 这张开篇综合图把三类非普通文本输入放回同一条治理路径：realtime 先启动长连接并构造 bounded startup context，输入和 server events 通过通道流转，handoff 可以进入普通 agent turn，transcript 被 reducer 写成 durable history；Apps 通过 MCP 工具边界暴露，图片则在模型请求前完成 data URL 校验、resize metadata 和失败占位。后文的 startup context、conversation start、history reducer、apps instructions 和 image preparation 片段分别证明这些边界。
 
@@ -442,7 +442,7 @@ apps 不直接启动一个独立执行循环。它们通过 connector 状态决�
 
 ### 6. 图片准备后进入模型请求
 
-![Image preparation](../../image/core/image-preparation-v1.svg)
+![Image preparation](../../image/core/image-preparation-v1.png)
 
 这张图片处理图要从 `prepare_response_items` 读起，重点看 data URL 校验、detail 分支、resize metadata、notice 注入和失败占位文本这几条分支。
 

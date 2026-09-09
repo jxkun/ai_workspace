@@ -2,7 +2,7 @@
 
 ## 读完你应掌握什么
 
-![Apply Patch 执行流程](../../image/core/apply-patch-flow-v1.svg)
+![Apply Patch 执行流程](../../image/core/apply-patch-flow-v1.png)
 
 开篇全局图：这张图先给出本文的结构化 patch 模型：freeform 输入先进入 parser，形成 `Hunk` / `ApplyPatchAction`，再经路径权限、patch safety、通用 orchestrator 和 sandbox runtime 落盘，最后回传 output 与 `AppliedPatchDelta`。对应源码入口是 `repo/codex/codex-rs/apply-patch/src/parser.rs`、`repo/codex/codex-rs/core/src/tools/handlers/apply_patch.rs`、`repo/codex/codex-rs/core/src/safety.rs`、`repo/codex/codex-rs/core/src/tools/runtimes/apply_patch.rs` 和 `repo/codex/codex-rs/apply-patch/src/lib.rs`。
 
@@ -169,7 +169,7 @@ async fn run(
 
 ## 主流程
 
-![Apply Patch 执行流程](../../image/core/apply-patch-flow-v1.svg)
+![Apply Patch 执行流程](../../image/core/apply-patch-flow-v1.png)
 
 这张图先看 `freeform patch -> parser -> ApplyPatchAction -> safety -> orchestrator -> runtime -> delta/output` 的主链路。下面 1 到 6 步按图中顺序解释每一层为什么存在。无需代码片段：主流程总述复用上一节 parser/action/runtime 代码证据。
 
@@ -187,7 +187,7 @@ parser 默认是 lenient 模式。它允许模型把 patch 包在 heredoc 标记
 
 ### 3. 计算有效权限和安全结论
 
-![Patch 安全路由](../../image/core/patch-safety-route-v1.svg)
+![Patch 安全路由](../../image/core/patch-safety-route-v1.png)
 
 这张安全路由图对应 `ApplyPatchAction -> assess_patch_safety -> approval/sandbox -> runtime`，读图时重点看目标路径、move 目标、可写根、sandbox route 和用户审批如何共同决定 patch 是否能落盘。
 
@@ -268,7 +268,7 @@ macro_rules! try_write {
 
 ## 失败模式与边界条件
 
-![Patch 安全路由](../../image/core/patch-safety-route-v1.svg)
+![Patch 安全路由](../../image/core/patch-safety-route-v1.png)
 
 这张安全路由图用于阅读下面的失败列表：parse error、路径权限、sandbox route、链接风险和写入副作用是不同边界。无需代码片段：parser、路径收集、runtime 写入和 delta exactness 已在前文贴近展示。
 

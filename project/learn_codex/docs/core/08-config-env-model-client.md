@@ -8,7 +8,7 @@
 - 能看懂 `Prompt` 如何被转换为 Responses API 请求。
 - 能说明 WebSocket、HTTP fallback、retry、metadata、auth recovery 这些机制如何影响一次模型调用。
 
-![Config 到 Turn 的流转](../../image/core/config-to-turn-v1.svg)
+![Config 到 Turn 的流转](../../image/core/config-to-turn-v1.png)
 
 这张开篇综合图先给出本文的主线：配置层合并成 `Config`，`Permissions` 和环境选择固定到 `TurnEnvironment`，每次模型采样再由 `StepContext` 捕获 MCP、工具和设置快照，最后由 `ModelClient` 把 `Prompt` 转成 Responses API 请求并处理传输恢复。后文的源码片段分别证明 `Permissions`、`StepContext` 和 `build_responses_request` 这三个关键落点。
 
@@ -247,7 +247,7 @@ Unified Exec 还会加 `NO_COLOR=1`、`TERM=dumb`、`PAGER=cat`、`CODEX_CI=1` �
 
 ### 5. `Prompt` 变成 Responses API request
 
-![Model Client 请求路径](../../image/core/model-client-request-v1.svg)
+![Model Client 请求路径](../../image/core/model-client-request-v1.png)
 
 这张模型请求图对应 `Prompt -> ResponsesApiRequest -> ResponseStream`，读图时重点看 Responses Lite 和普通 Responses API 的差异，以及 metadata、reasoning、tool specs 如何落进请求。
 

@@ -10,7 +10,7 @@
 - 能解释 tool registry、approval/sandbox、WorldState、multi-agent、rollout reconstruction 的关键不变量。
 - 能判断一篇 core 文档是否只是“贴文件链接”，还是已经提供了足够的代码证据。
 
-![Session turn loop](../../image/core/session-turn-loop-v1.svg)
+![Session turn loop](../../image/core/session-turn-loop-v1.png)
 
 这张开篇综合图把本文的证据路径压成一条主干：外部通过 `CodexThread` 提交输入，`TurnInputMode` 决定 start/steer/reject，`run_sampling_request` 绑定 `StepContext`、prompt 和工具 runtime，工具调用进入 router/orchestrator，结果再写入 history、rollout、compaction 与恢复链路。后文 8 组代码证据沿这条主干展开，并在 WorldState、tool runtime、multi-agent 和 rollout 处就近复用对应专题图。
 
@@ -227,7 +227,7 @@ async fn run_sampling_request(
 
 ### Code Evidence: WorldState section 是可持久化、可 diff 的状态合约
 
-![Context 与 WorldState](../../image/core/context-world-state-v1.svg)
+![Context 与 WorldState](../../image/core/context-world-state-v1.png)
 
 这张图要从 section snapshot 读起：`WorldStateSection` 负责把模型可见状态变成可持久化、可 diff、可 retained/legacy 匹配的上下文片段，下面的 trait 定义就是这个合约的源码形状。
 
@@ -274,7 +274,7 @@ pub(crate) trait WorldStateSection: Send + Sync + 'static {
 
 ### Code Evidence: 每个 step 的工具集合由 router 现场装配
 
-![Tool runtime](../../image/core/tool-runtime-v1.svg)
+![Tool runtime](../../image/core/tool-runtime-v1.png)
 
 这张工具运行图对应主流程第 3-5 步：先在 step 上冻结模型、环境和 MCP 视图，再由 router 暴露本次可见工具，最后才进入统一执行外壳。
 
@@ -375,7 +375,7 @@ where
 
 ### Code Evidence: 子 agent 创建先占位，失败自动释放
 
-![Multi-agent control plane](../../image/core/multi-agent-control-v1.svg)
+![Multi-agent control plane](../../image/core/multi-agent-control-v1.png)
 
 这张控制面图要重点看 `AgentControl` 与 `AgentRegistry` 的交界：模型只能表达 `spawn_agent` 意图，容量、path、metadata 和父子 thread 关系都由控制面提交或回滚。
 
@@ -431,7 +431,7 @@ impl Drop for SpawnReservation {
 
 ### Code Evidence: resume/fork 先反向找 checkpoint，再正向重放
 
-![Rollout compaction resume](../../image/core/rollout-compaction-resume-v1.svg)
+![Rollout compaction resume](../../image/core/rollout-compaction-resume-v1.png)
 
 这张 rollout 图要从 checkpoint 安装读到 resume/fork：下面的代码片段证明恢复不是全量重放日志，而是反向找有效锚点后正向重放 surviving suffix。
 

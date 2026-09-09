@@ -4,7 +4,7 @@
 
 ## 读完你应掌握什么
 
-![Session turn loop](../../image/core/session-turn-loop-v1.svg)
+![Session turn loop](../../image/core/session-turn-loop-v1.png)
 
 开篇全局图：这张图先建立本文的执行主轴：`TurnInputRequest` 进入 session 队列，被包装成 `SessionTask`，再在 `TurnContext` / `StepContext` 边界中调用模型、执行工具、写回事件和 rollout。对应源码入口是 `repo/codex/codex-rs/protocol/src/turn_input.rs`、`repo/codex/codex-rs/core/src/tasks/mod.rs`、`repo/codex/codex-rs/core/src/session/turn.rs` 和 `repo/codex/codex-rs/core/src/session/mod.rs`。
 
@@ -230,7 +230,7 @@ let sampling_request_result: CodexResult<_> = async {
 
 ## 主流程
 
-![Session turn loop](../../image/core/session-turn-loop-v1.svg)
+![Session turn loop](../../image/core/session-turn-loop-v1.png)
 
 这张图按 `input -> task -> turn -> step -> model stream -> tool follow-up -> event/rollout` 阅读。下面 1 到 6 步对应图中的主链路节点；特殊 task 类型可再对照 `task-types-v1.svg`。无需代码片段：主流程总述引用上一节的协议、任务接口和 `run_turn` 代码证据。
 
@@ -247,7 +247,7 @@ let sampling_request_result: CodexResult<_> = async {
 
 ### 2. SessionTask 统一任务类型
 
-![Task types](../../image/core/task-types-v1.svg)
+![Task types](../../image/core/task-types-v1.png)
 
 这张任务类型图用于区分 regular、compact、review、user shell 等 task 如何共享 session 调度和 abort 边界；读图时不要把所有任务都理解成普通用户 turn。
 
@@ -285,7 +285,7 @@ turn 结束不只是返回一句话。session 还要更新 world state、token u
 
 ## 端到端 Trace
 
-![Session turn loop](../../image/core/session-turn-loop-v1.svg)
+![Session turn loop](../../image/core/session-turn-loop-v1.png)
 
 这张图在 trace 章节中作为执行链路图复用：表格每一行都能映射到图中的一个节点，尤其是 step 建立、工具 follow-up 和收尾事件三个容易漏掉的边界。无需代码片段：trace 表格引用的是前文 `TurnInput`、`SessionTask` 和 `run_turn` 片段。
 
@@ -306,7 +306,7 @@ turn 结束不只是返回一句话。session 还要更新 world state、token u
 
 ## 失败模式与边界条件
 
-![Task types](../../image/core/task-types-v1.svg)
+![Task types](../../image/core/task-types-v1.png)
 
 本节用 task 类型图定位失败边界：输入模式、普通 turn、compact/review/user-shell 等任务共享调度和 abort 机制，但失败原因会落在不同 task 的 run/abort 语义上。无需代码片段：`SessionTask` trait 和 `run_turn` 片段已经给出可复查实现形态。
 

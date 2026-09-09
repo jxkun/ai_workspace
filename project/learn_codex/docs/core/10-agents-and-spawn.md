@@ -10,7 +10,7 @@
 - 知道 fork 子 agent 时为什么要过滤父线程历史、替换 developer instructions、清理 usage hint 和 guardian 上下文。
 - 能说出多 agent 的主要边界：数量限制、深度限制、父子归属、环境继承、执行权限继承和持久化恢复。
 
-![Multi-agent control plane](../../image/core/multi-agent-control-v1.svg)
+![Multi-agent control plane](../../image/core/multi-agent-control-v1.png)
 
 这张开篇综合图先把本文的三层关系合在一起：模型只通过多 agent 工具表达意图，`AgentControl` 负责 spawn/send/wait/list/interrupt 的控制面，`AgentRegistry` 维护 root agent 树内的身份、容量和路径；fork、role、residency、rollout flush 与恢复都围绕这条控制面展开。后文的 `AgentControl`、V2 `spawn_agent` handler、`SpawnReservation` 和 fork 过滤代码片段分别证明图中的控制面、工具入口、半成功回滚和历史继承边界。
 
@@ -147,7 +147,7 @@ let context = AgentCommunicationContext::new(AgentCommunicationKind::Spawn, sess
 
 ### 3. spawn 预留用 RAII 防止半成功状态泄漏
 
-![Spawn agent lifecycle](../../image/core/spawn-agent-lifecycle-v1.svg)
+![Spawn agent lifecycle](../../image/core/spawn-agent-lifecycle-v1.png)
 
 这张生命周期图在这里重点看 reserve / commit / failed rollback 三段：下面的 `SpawnReservation` 代码就是图中“失败自动释放容量和 path”的实现证据。
 
@@ -325,7 +325,7 @@ V2 的入口在 `tools/handlers/multi_agents_v2/spawn.rs`：
 
 ### 2. `AgentControl` 做容量和身份登记
 
-![Spawn agent lifecycle](../../image/core/spawn-agent-lifecycle-v1.svg)
+![Spawn agent lifecycle](../../image/core/spawn-agent-lifecycle-v1.png)
 
 这张生命周期图对应下面 10 个动作：从工具参数解析、配置继承、容量预留、创建或 fork thread，到 `commit` 注册和提交初始任务；失败分支要沿着 reservation 的释放路径看。
 

@@ -7,7 +7,7 @@
 
 本文基于源码快照 `repo/codex/`，版本见 [../source-snapshot.md](../source-snapshot.md)。
 
-![Codex core module map](../../image/core/codex-core-module-map-v1.svg)
+![Codex core module map](../../image/core/codex-core-module-map-v1.png)
 
 ## 1. 总体拆解原则
 
