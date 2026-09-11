@@ -16,8 +16,8 @@
 
 ## 4. Visual Assets
 
-- [x] 4.1 Generate `image/learning-roadmap/codex-harness-roadmap-v2.svg`.
-- [x] 4.2 Generate `image/learning-roadmap/codex-harness-layer-map-v2.svg`.
+- [x] 4.1 Generate `image/learning-roadmap/codex-harness-roadmap-v2.png`.
+- [x] 4.2 Generate `image/learning-roadmap/codex-harness-layer-map-v2.png`.
 - [x] 4.3 Reference generated images from the roadmap document.
 
 ## 5. Validation

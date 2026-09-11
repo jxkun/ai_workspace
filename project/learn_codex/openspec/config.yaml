@@ -14,7 +14,7 @@ context: |
   Source truth: analyze the local `repo/codex/` snapshot and record its commit or release in `docs/source-snapshot.md`.
   Documentation: Markdown files under `docs/` carry text analysis; every implementation claim needs source anchors when possible.
   Diagram constraint: flow, architecture, state, and sequence diagrams MUST be generated image files under `image/`; Mermaid, PlantUML, or ASCII diagrams are not final diagram artifacts.
-  Diagram quality: prefer SVG vector images for final diagrams; PNG is acceptable only when exported at high resolution with anti-aliased text and lines. Do not ship pixelated, jagged, blurry, crowded, or low-legibility diagrams.
+  Diagram quality: final Markdown documents should reference PNG images; keep same-name SVG files as editable sources when generated from vector diagrams. PNG must be exported from SVG or a high-resolution canvas with anti-aliased text and lines. Do not ship pixelated, jagged, blurry, crowded, or low-legibility diagrams.
 
 # Per-artifact rules (optional)
 # Add custom rules for specific artifacts.

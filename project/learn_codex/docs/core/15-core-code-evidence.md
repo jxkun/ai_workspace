@@ -51,14 +51,14 @@
 
 | 读者必须掌握的不变量 | 代码片段 | 对应专题 | 对应图示 |
 | --- | --- | --- | --- |
-| 上层只能通过 thread 句柄提交 `Op`，不能绕过 session 内部队列 | `CodexThread::submit` | [01-thread-lifecycle.md](01-thread-lifecycle.md) | `thread-lifecycle-v1.svg` |
-| 输入接受只是 start/steer/reject 的调度结果，不等于模型完成 | `TurnInputMode` / `TurnInputSubmission` | [02-session-turn-loop.md](02-session-turn-loop.md) | `session-turn-loop-v1.svg` |
-| 每次采样都绑定 step 级工具、权限、环境和 diff 视图 | `run_sampling_request` | [02-session-turn-loop.md](02-session-turn-loop.md) | `session-turn-loop-v1.svg` |
-| 模型可见状态必须可 snapshot、diff、retained/legacy 匹配 | `WorldStateSection` | [03-context-world-state.md](03-context-world-state.md) | `context-world-state-v1.svg` |
-| 工具不是全局常量，而是每个 step 现场装配出来的 router | `build_tool_router` | [04-tool-runtime.md](04-tool-runtime.md) | `tool-runtime-v1.svg` |
-| 审批、sandbox 和网络策略必须在工具外壳统一判定 | `ToolOrchestrator::run` | [06-safety-sandbox-approval.md](06-safety-sandbox-approval.md) | `safety-approval-decision-v1.svg` |
-| 子 agent 创建必须先 reserve，失败自动释放，成功才 commit | `reserve_spawn_slot` / `SpawnReservation` | [10-agents-and-spawn.md](10-agents-and-spawn.md) | `multi-agent-control-v1.svg` |
-| 恢复历史要反向找有效 checkpoint，再正向重放 surviving suffix | `reconstruct_history_from_rollout` | [11-rollout-compaction-resume.md](11-rollout-compaction-resume.md) | `rollout-compaction-resume-v1.svg` |
+| 上层只能通过 thread 句柄提交 `Op`，不能绕过 session 内部队列 | `CodexThread::submit` | [01-thread-lifecycle.md](01-thread-lifecycle.md) | `thread-lifecycle-v1.png` |
+| 输入接受只是 start/steer/reject 的调度结果，不等于模型完成 | `TurnInputMode` / `TurnInputSubmission` | [02-session-turn-loop.md](02-session-turn-loop.md) | `session-turn-loop-v1.png` |
+| 每次采样都绑定 step 级工具、权限、环境和 diff 视图 | `run_sampling_request` | [02-session-turn-loop.md](02-session-turn-loop.md) | `session-turn-loop-v1.png` |
+| 模型可见状态必须可 snapshot、diff、retained/legacy 匹配 | `WorldStateSection` | [03-context-world-state.md](03-context-world-state.md) | `context-world-state-v1.png` |
+| 工具不是全局常量，而是每个 step 现场装配出来的 router | `build_tool_router` | [04-tool-runtime.md](04-tool-runtime.md) | `tool-runtime-v1.png` |
+| 审批、sandbox 和网络策略必须在工具外壳统一判定 | `ToolOrchestrator::run` | [06-safety-sandbox-approval.md](06-safety-sandbox-approval.md) | `safety-approval-decision-v1.png` |
+| 子 agent 创建必须先 reserve，失败自动释放，成功才 commit | `reserve_spawn_slot` / `SpawnReservation` | [10-agents-and-spawn.md](10-agents-and-spawn.md) | `multi-agent-control-v1.png` |
+| 恢复历史要反向找有效 checkpoint，再正向重放 surviving suffix | `reconstruct_history_from_rollout` | [11-rollout-compaction-resume.md](11-rollout-compaction-resume.md) | `rollout-compaction-resume-v1.png` |
 
 ## 主流程
 
@@ -524,11 +524,11 @@ for item in world_state_replay {
 
 ## 图示
 
-- [Session turn loop](../../image/core/session-turn-loop-v1.svg)：作为开篇综合图，放在“读完你应掌握什么”下方，用来对照 evidence guide 的 8 步主干。
-- [Context 与 WorldState](../../image/core/context-world-state-v1.svg)：放在 `WorldStateSection` 证据段落附近，用来解释 snapshot/diff/retained history 合约。
-- [Tool runtime](../../image/core/tool-runtime-v1.svg)：放在 `build_tool_router` 证据段落附近，用来解释 step 级工具曝光和执行边界。
-- [Multi-agent control plane](../../image/core/multi-agent-control-v1.svg)：放在 spawn reservation 证据段落附近，用来解释控制面如何提交或回滚子 agent。
-- [Rollout compaction resume](../../image/core/rollout-compaction-resume-v1.svg)：放在 rollout reconstruction 证据段落附近，用来解释 checkpoint 与 surviving suffix 的恢复路径。
+- [Session turn loop](../../image/core/session-turn-loop-v1.png)：作为开篇综合图，放在“读完你应掌握什么”下方，用来对照 evidence guide 的 8 步主干。
+- [Context 与 WorldState](../../image/core/context-world-state-v1.png)：放在 `WorldStateSection` 证据段落附近，用来解释 snapshot/diff/retained history 合约。
+- [Tool runtime](../../image/core/tool-runtime-v1.png)：放在 `build_tool_router` 证据段落附近，用来解释 step 级工具曝光和执行边界。
+- [Multi-agent control plane](../../image/core/multi-agent-control-v1.png)：放在 spawn reservation 证据段落附近，用来解释控制面如何提交或回滚子 agent。
+- [Rollout compaction resume](../../image/core/rollout-compaction-resume-v1.png)：放在 rollout reconstruction 证据段落附近，用来解释 checkpoint 与 surviving suffix 的恢复路径。
 
 ## 复设计练习
 

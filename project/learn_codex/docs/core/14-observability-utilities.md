@@ -373,8 +373,8 @@ memory usage metric 不解析所有工具，只在默认 namespace 的 `exec_com
 
 ## 图示
 
-- [Turn observability](../../image/core/turn-observability-v1.svg)：作为开篇综合图，放在“读完你应掌握什么”下方，用来对照 turn metadata、timing、stream 处理、diff 和 analytics。
-- [Supporting utils map](../../image/core/supporting-utils-map-v1.svg)：放在“supporting utilities 服务安全和可复现”附近，用来说明外围 utility 如何服务主链路。
+- [Turn observability](../../image/core/turn-observability-v1.png)：作为开篇综合图，放在“读完你应掌握什么”下方，用来对照 turn metadata、timing、stream 处理、diff 和 analytics。
+- [Supporting utils map](../../image/core/supporting-utils-map-v1.png)：放在“supporting utilities 服务安全和可复现”附近，用来说明外围 utility 如何服务主链路。
 
 ## 复设计练习
 

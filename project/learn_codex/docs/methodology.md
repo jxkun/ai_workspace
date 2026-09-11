@@ -2,7 +2,7 @@
 
 本文定义后续如何系统学习和分析 `openai/codex` harness。目标不是写使用教程，而是把 harness 的实现机制、设计取舍、边界条件和可验证证据沉淀成可持续维护的文档体系。
 
-![Codex harness study methodology](../image/methodology/codex-harness-study-methodology-v2.svg)
+![Codex harness study methodology](../image/methodology/codex-harness-study-methodology-v2.png)
 
 ## 1. 分析目标
 
@@ -101,9 +101,9 @@
 
 - 图片根目录：`image/`
 - 子目录按文档或主题拆分，例如 `image/runtime-loop/`、`image/tool-sandbox/`。
-- 推荐文件命名：`<topic>-<purpose>-v<version>.svg`；需要位图交付时再导出同名 `.png`。
-- 文档引用使用相对路径，例如 `![Runtime loop](../image/runtime-loop/runtime-loop-main-v1.svg)`。
-- 如果用 DSL 生成图片，DSL 源文件应放在同一子目录，例如 `runtime-loop-main-v1.mmd` 和 `runtime-loop-main-v1.svg`。
+- 推荐文件命名：`<topic>-<purpose>-v<version>.png`；同目录保留同名 `.svg` 作为可编辑源。
+- 文档引用使用相对路径，例如 `![Runtime loop](../image/runtime-loop/runtime-loop-main-v1.png)`。
+- 如果用 DSL 生成图片，DSL 源文件应放在同一子目录，例如 `runtime-loop-main-v1.mmd`、`runtime-loop-main-v1.png` 和 `runtime-loop-main-v1.png`。
 - 最终文档不能只保留 Mermaid、PlantUML、ASCII 图或伪代码图。
 
 图片验收要同时检查：
@@ -120,11 +120,11 @@
 | 阶段 | 目标 | 主要产出 |
 | --- | --- | --- |
 | Stage 0 | 固化项目结构、OpenSpec、源码快照和分析方法论 | `README.md`、`AGENTS.md`、`docs/methodology.md`、`docs/source-snapshot.md` |
-| Stage 1 | 建立 harness 全局地图 | `docs/harness-overview.md` 和总览图片 |
+| Stage 1 | 建立 Entry 层入口地图，并拆分 CLI/TUI/app-server 三个入口部分 | `docs/entry/00-entry-map.md` 到 `docs/entry/04-app-server-json-rpc-control-plane.md` 及对应 PNG |
 | Stage 2 | 深挖 runtime loop 与事件模型 | `docs/runtime-loop-analysis.md` 和主循环图片 |
 | Stage 3 | 深挖 tools、sandbox、approval、apply_patch | `docs/tool-sandbox-analysis.md`、实验草案 |
-| Stage 4 | 深挖 protocol、rollout、state、memory | `docs/protocol-and-events.md`、`docs/state-and-memory.md` |
-| Stage 5 | 深挖 extension points | `docs/extension-points.md` |
+| Stage 4 | 建立 Support 层地图和协议/持久化链路 | `docs/support/00-support-map.md`、`docs/support/01-protocol-rollout-thread-store.md` 及对应 PNG |
+| Stage 5 | 建立 Extension 层地图和扩展链路 | `docs/extension/00-extension-map.md`、`docs/extension/01-skills-plugins-mcp-hooks.md` 及对应 PNG |
 | Stage 6 | 基于理解做最小实验 | `examples/`、`tests/`、验证记录 |
 
 实验不早于 Stage 3。理解链路稳定前，不用实验代码替代源码阅读。

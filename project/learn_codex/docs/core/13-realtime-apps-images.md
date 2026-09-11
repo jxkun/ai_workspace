@@ -479,8 +479,8 @@ apps 不直接启动一个独立执行循环。它们通过 connector 状态决�
 
 ## 图示
 
-- [Realtime context flow](../../image/core/realtime-context-flow-v1.svg)：作为开篇综合图，放在“读完你应掌握什么”下方，用来对照 realtime start、输入通道、server events、handoff 和 durable history。
-- [Image preparation](../../image/core/image-preparation-v1.svg)：放在“图片准备后进入模型请求”附近，用来解释图片校验、改写、metadata 和失败降级。
+- [Realtime context flow](../../image/core/realtime-context-flow-v1.png)：作为开篇综合图，放在“读完你应掌握什么”下方，用来对照 realtime start、输入通道、server events、handoff 和 durable history。
+- [Image preparation](../../image/core/image-preparation-v1.png)：放在“图片准备后进入模型请求”附近，用来解释图片校验、改写、metadata 和失败降级。
 
 ## 复设计练习
 

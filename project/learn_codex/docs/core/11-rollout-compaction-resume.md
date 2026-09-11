@@ -402,8 +402,8 @@ compaction 可能来自用户手动请求，也可能来自自动上下文窗口
 
 ## 图示
 
-- [Rollout compaction resume](../../image/core/rollout-compaction-resume-v1.svg)：作为开篇综合图，放在“读完你应掌握什么”下方，用来对照正常记录、压缩、checkpoint 安装和后续恢复。
-- [Thread reconstruction](../../image/core/thread-reconstruction-v1.svg)：放在“恢复或 fork 时重建历史”附近，用来解释反向找锚点和正向重放尾部的顺序。
+- [Rollout compaction resume](../../image/core/rollout-compaction-resume-v1.png)：作为开篇综合图，放在“读完你应掌握什么”下方，用来对照正常记录、压缩、checkpoint 安装和后续恢复。
+- [Thread reconstruction](../../image/core/thread-reconstruction-v1.png)：放在“恢复或 fork 时重建历史”附近，用来解释反向找锚点和正向重放尾部的顺序。
 
 ## 复设计练习
 

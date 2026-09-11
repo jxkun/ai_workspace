@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="720" viewBox="0 0 1180 720" role="img" aria-labelledby="title desc">
+  <title id="title">Codex harness Extension layer map</title>
+  <desc id="desc">Extension layer surfaces add skills, plugins, MCP servers, hooks, and connectors to the core runtime.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 1.4; rx: 8; }
+      .ext { fill: #fff1f2; stroke: #be123c; stroke-width: 1.5; rx: 8; }
+      .mcp { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 1.5; rx: 8; }
+      .core { fill: #ecfdf5; stroke: #047857; stroke-width: 1.5; rx: 8; }
+      .text { font-family: Inter, Arial, sans-serif; fill: #0f172a; font-size: 20px; }
+      .small { font-family: Inter, Arial, sans-serif; fill: #334155; font-size: 15px; }
+      .tiny { font-family: Inter, Arial, sans-serif; fill: #475569; font-size: 13px; }
+      .arrow { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #64748b; stroke-width: 1.6; fill: none; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1180" height="720"/>
+  <text class="text" x="54" y="54">Extension Layer: 外部能力以声明、运行时和拦截点进入 Core</text>
+  <text class="small" x="54" y="84">Skills 提供 prompt 能力，Plugins 组合资源，MCP 暴露工具，Hooks 拦截生命周期，Connectors 投影 app/tool 状态。</text>
+
+  <rect class="core" x="426" y="112" width="328" height="86"/>
+  <text class="text" x="466" y="148">Core extension registry</text>
+  <text class="small" x="466" y="176">thread context / tools / lifecycle</text>
+
+  <rect class="ext" x="70" y="278" width="210" height="88"/>
+  <text class="text" x="102" y="314">Skills</text>
+  <text class="small" x="102" y="342">SKILL.md metadata</text>
+  <rect class="ext" x="320" y="278" width="210" height="88"/>
+  <text class="text" x="352" y="314">Plugins</text>
+  <text class="small" x="352" y="342">skills / MCP / apps / hooks</text>
+  <rect class="mcp" x="570" y="278" width="210" height="88"/>
+  <text class="text" x="602" y="314">MCP</text>
+  <text class="small" x="602" y="342">tool catalog / calls</text>
+  <rect class="ext" x="820" y="278" width="210" height="88"/>
+  <text class="text" x="852" y="314">Hooks</text>
+  <text class="small" x="852" y="342">events / handlers</text>
+
+  <rect class="mcp" x="198" y="472" width="260" height="86"/>
+  <text class="text" x="230" y="508">Connectors</text>
+  <text class="small" x="230" y="536">app tool projection</text>
+  <rect class="core" x="666" y="472" width="260" height="86"/>
+  <text class="text" x="698" y="508">Tool runtime</text>
+  <text class="small" x="698" y="536">model-visible tools</text>
+
+  <rect class="box" x="230" y="618" width="720" height="54"/>
+  <text class="small" x="260" y="650">边界不变量：扩展层声明能力，Core 决定何时注入、暴露、执行和记录。</text>
+
+  <path class="arrow" d="M175 278 C238 208 332 160 426 154"/>
+  <path class="arrow" d="M425 278 C454 220 502 190 536 198"/>
+  <path class="arrow" d="M675 278 C674 222 650 196 626 198"/>
+  <path class="arrow" d="M925 278 C876 206 804 166 754 154"/>
+  <path class="arrow" d="M530 322 L570 322"/>
+  <path class="arrow" d="M675 366 C650 420 610 470 666 514"/>
+  <path class="dash" d="M675 366 C580 438 462 482 458 514"/>
+  <path class="dash" d="M458 514 L666 514"/>
+  <path class="dash" d="M796 558 L796 618"/>
+  <text class="tiny" x="98" y="390">prompt / policy</text>
+  <text class="tiny" x="342" y="390">bundle manifest</text>
+  <text class="tiny" x="596" y="390">runtime binding</text>
+  <text class="tiny" x="846" y="390">pre/post events</text>
+</svg>

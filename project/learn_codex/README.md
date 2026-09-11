@@ -12,9 +12,15 @@ learn_codex/
   docs/
     methodology.md
     source-snapshot.md
+    entry/
+    core/
+    support/
+    extension/
   image/
     methodology/
     architecture/
+    state-memory/
+    extension-points/
   openspec/
     changes/
       setup-codex-harness-study/
@@ -38,6 +44,9 @@ learn_codex/
 
 ## 当前状态
 
-- OpenSpec change: `openspec/changes/setup-codex-harness-study/`
+- OpenSpec 初始化 change: `openspec/changes/setup-codex-harness-study/`
+- 文档入口: `docs/index.md`
 - 方法论入口: `docs/methodology.md`
+- 学习路线: `docs/codex-harness-learning-roadmap.md`
 - 源码快照记录: `docs/source-snapshot.md`
+- 当前四层文档入口: `docs/entry/README.md`、`docs/core/README.md`、`docs/support/README.md`、`docs/extension/README.md`

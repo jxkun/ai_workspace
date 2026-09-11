@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="760" viewBox="0 0 1240 760" role="img" aria-labelledby="title desc">
+  <title id="title">app-server JSON-RPC control plane</title>
+  <desc id="desc">app-server receives JSON-RPC messages, initializes the connection, serializes scoped requests, dispatches to processors, and returns responses or notifications.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 1.4; rx: 8; }
+      .wire { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 1.5; rx: 8; }
+      .proc { fill: #ecfdf5; stroke: #047857; stroke-width: 1.5; rx: 8; }
+      .risk { fill: #fff7ed; stroke: #c2410c; stroke-width: 1.4; rx: 8; }
+      .text { font-family: Inter, Arial, sans-serif; fill: #0f172a; font-size: 20px; }
+      .small { font-family: Inter, Arial, sans-serif; fill: #334155; font-size: 15px; }
+      .tiny { font-family: Inter, Arial, sans-serif; fill: #475569; font-size: 13px; }
+      .arrow { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #64748b; stroke-width: 1.6; fill: none; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1240" height="760"/>
+  <text class="text" x="54" y="52">Entry Part: app-server JSON-RPC control plane</text>
+  <text class="small" x="54" y="82">app-server 是富客户端控制面：连接初始化、request 反序列化、scope 串行化、processor 分发和响应投递分层处理。</text>
+
+  <rect class="wire" x="78" y="132" width="250" height="78"/>
+  <text class="text" x="110" y="166">Transport</text>
+  <text class="small" x="110" y="192">websocket / stdio / in-process</text>
+  <rect class="wire" x="404" y="132" width="250" height="78"/>
+  <text class="text" x="436" y="166">JSONRPCRequest</text>
+  <text class="small" x="436" y="192">method / id / params / trace</text>
+  <rect class="wire" x="730" y="132" width="250" height="78"/>
+  <text class="text" x="762" y="166">ClientRequest</text>
+  <text class="small" x="762" y="192">typed params + response</text>
+
+  <rect class="proc" x="98" y="344" width="260" height="78"/>
+  <text class="text" x="130" y="378">Initialize</text>
+  <text class="small" x="130" y="404">capabilities / outbound ready</text>
+  <rect class="proc" x="446" y="344" width="260" height="78"/>
+  <text class="text" x="478" y="378">Serialization scope</text>
+  <text class="small" x="478" y="404">global / thread / process</text>
+  <rect class="proc" x="794" y="344" width="260" height="78"/>
+  <text class="text" x="826" y="378">Processor dispatch</text>
+  <text class="small" x="826" y="404">thread / turn / mcp / fs</text>
+
+  <rect class="proc" x="216" y="556" width="260" height="78"/>
+  <text class="text" x="248" y="590">ThreadProcessor</text>
+  <text class="small" x="248" y="616">start / resume / fork</text>
+  <rect class="proc" x="540" y="556" width="260" height="78"/>
+  <text class="text" x="572" y="590">TurnProcessor</text>
+  <text class="small" x="572" y="616">turn/start / steer</text>
+  <rect class="risk" x="864" y="556" width="260" height="78"/>
+  <text class="text" x="896" y="590">Error response</text>
+  <text class="small" x="896" y="616">not initialized / invalid params</text>
+
+  <path class="arrow" d="M328 171 L404 171"/>
+  <path class="arrow" d="M654 171 L730 171"/>
+  <path class="arrow" d="M855 210 C720 278 406 302 228 344"/>
+  <path class="arrow" d="M855 210 C784 286 648 320 576 344"/>
+  <path class="arrow" d="M855 210 C884 276 908 318 924 344"/>
+  <path class="arrow" d="M924 422 C850 484 706 522 476 595"/>
+  <path class="arrow" d="M924 422 C824 482 752 526 670 556"/>
+  <path class="dash" d="M576 422 C620 505 800 530 994 556"/>
+  <text class="tiny" x="132" y="238">connection events</text>
+  <text class="tiny" x="430" y="238">deserialize</text>
+  <text class="tiny" x="756" y="238">experimental + scope</text>
+  <text class="tiny" x="468" y="452">request ordering gates</text>
+  <text class="tiny" x="826" y="452">typed handler match</text>
+</svg>

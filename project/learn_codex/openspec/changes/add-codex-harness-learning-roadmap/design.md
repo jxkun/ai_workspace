@@ -51,8 +51,8 @@
 
 为了满足可视化要求，本次生成并优先引用矢量版图片：
 
-- `image/learning-roadmap/codex-harness-roadmap-v2.svg`：学习阶段全景，当前推荐版本。
-- `image/learning-roadmap/codex-harness-layer-map-v2.svg`：四层源码地图，当前推荐版本。
+- `image/learning-roadmap/codex-harness-roadmap-v2.png`：学习阶段全景，当前推荐版本。
+- `image/learning-roadmap/codex-harness-layer-map-v2.png`：四层源码地图，当前推荐版本。
 
 Markdown 文档引用这些图片；不使用 Mermaid 或 ASCII 图作为最终图示。
 

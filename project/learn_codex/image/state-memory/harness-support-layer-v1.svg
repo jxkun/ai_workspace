@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="720" viewBox="0 0 1180 720" role="img" aria-labelledby="title desc">
+  <title id="title">Codex harness Support layer map</title>
+  <desc id="desc">Support layer types and storage systems carry protocol, rollout, thread store, context fragments, and memories around the core runtime.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 1.4; rx: 8; }
+      .store { fill: #f0fdf4; stroke: #15803d; stroke-width: 1.5; rx: 8; }
+      .state { fill: #eff6ff; stroke: #2563eb; stroke-width: 1.5; rx: 8; }
+      .mem { fill: #fdf4ff; stroke: #a21caf; stroke-width: 1.5; rx: 8; }
+      .text { font-family: Inter, Arial, sans-serif; fill: #0f172a; font-size: 20px; }
+      .small { font-family: Inter, Arial, sans-serif; fill: #334155; font-size: 15px; }
+      .tiny { font-family: Inter, Arial, sans-serif; fill: #475569; font-size: 13px; }
+      .arrow { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #64748b; stroke-width: 1.6; fill: none; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1180" height="720"/>
+  <text class="text" x="54" y="54">Support Layer: 让 Core 可以跨 turn、跨线程、跨恢复维持一致语义</text>
+  <text class="small" x="54" y="84">Protocol 定义消息形状；context fragments 和 memory 进入模型上下文；rollout 与 thread-store 保存可恢复历史。</text>
+
+  <rect class="box" x="444" y="122" width="292" height="82"/>
+  <text class="text" x="476" y="156">codex-core runtime</text>
+  <text class="small" x="476" y="184">Session / Turn / Tool runtime</text>
+
+  <rect class="state" x="70" y="276" width="250" height="94"/>
+  <text class="text" x="102" y="312">protocol</text>
+  <text class="small" x="102" y="340">Submission / Op / EventMsg</text>
+  <rect class="state" x="370" y="276" width="250" height="94"/>
+  <text class="text" x="402" y="312">context-fragments</text>
+  <text class="small" x="402" y="340">RenderedFragment / markers</text>
+  <rect class="store" x="670" y="276" width="250" height="94"/>
+  <text class="text" x="702" y="312">rollout</text>
+  <text class="small" x="702" y="340">JSONL / replay / compaction</text>
+  <rect class="store" x="520" y="448" width="250" height="94"/>
+  <text class="text" x="552" y="484">thread-store</text>
+  <text class="small" x="552" y="512">durable thread API</text>
+  <rect class="mem" x="820" y="448" width="250" height="94"/>
+  <text class="text" x="852" y="484">memories</text>
+  <text class="small" x="852" y="512">prompt + tools extension</text>
+
+  <rect class="box" x="178" y="596" width="824" height="58"/>
+  <text class="small" x="210" y="631">边界不变量：Support 层承载形状、历史和上下文，不拥有主执行循环。</text>
+
+  <path class="arrow" d="M444 164 C340 190 256 222 196 276"/>
+  <path class="arrow" d="M520 204 L496 276"/>
+  <path class="arrow" d="M660 204 L768 276"/>
+  <path class="arrow" d="M784 370 L676 448"/>
+  <path class="arrow" d="M914 448 C862 390 746 250 650 204"/>
+  <path class="dash" d="M496 370 C560 418 640 428 645 448"/>
+  <path class="dash" d="M196 370 C250 512 350 614 520 625"/>
+  <text class="tiny" x="88" y="392">跨 crate wire contract</text>
+  <text class="tiny" x="384" y="392">模型可见上下文片段</text>
+  <text class="tiny" x="706" y="392">可回放执行记录</text>
+  <text class="tiny" x="840" y="566">记忆读写与提示注入</text>
+</svg>

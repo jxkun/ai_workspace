@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="700" viewBox="0 0 1180 700" role="img" aria-labelledby="title desc">
+  <title id="title">Codex harness Entry layer map</title>
+  <desc id="desc">Entry layer clients route CLI, TUI, and app-server requests into the shared core thread and turn boundary.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .band { fill: #eef2ff; stroke: #64748b; stroke-width: 1.4; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 1.4; rx: 8; }
+      .core { fill: #ecfdf5; stroke: #047857; stroke-width: 1.6; rx: 8; }
+      .warn { fill: #fff7ed; stroke: #c2410c; stroke-width: 1.4; rx: 8; }
+      .text { font-family: Inter, Arial, sans-serif; fill: #0f172a; font-size: 20px; }
+      .small { font-family: Inter, Arial, sans-serif; fill: #334155; font-size: 15px; }
+      .tiny { font-family: Inter, Arial, sans-serif; fill: #475569; font-size: 13px; }
+      .arrow { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #64748b; stroke-width: 1.6; fill: none; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1180" height="700"/>
+  <text class="text" x="54" y="54">Entry Layer: 多入口收敛到同一个 Core thread / turn 边界</text>
+  <text class="small" x="54" y="84">CLI、TUI、app-server 负责参数、UI 或 RPC；真正的会话生命周期和 turn 执行由 codex-core 承接。</text>
+
+  <rect class="band" x="40" y="118" width="1100" height="196"/>
+  <text class="small" x="64" y="150">用户与宿主入口</text>
+  <rect class="box" x="78" y="178" width="260" height="92"/>
+  <text class="text" x="104" y="212">CLI</text>
+  <text class="small" x="104" y="241">subcommand / prompt / config</text>
+  <rect class="box" x="460" y="178" width="260" height="92"/>
+  <text class="text" x="486" y="212">TUI</text>
+  <text class="small" x="486" y="241">App state / event loop / UI</text>
+  <rect class="box" x="842" y="178" width="260" height="92"/>
+  <text class="text" x="868" y="212">app-server</text>
+  <text class="small" x="868" y="241">JSON-RPC / request processors</text>
+
+  <rect class="band" x="40" y="374" width="1100" height="194"/>
+  <text class="small" x="64" y="406">Core 入口契约</text>
+  <rect class="core" x="214" y="434" width="260" height="88"/>
+  <text class="text" x="240" y="468">ThreadManager</text>
+  <text class="small" x="240" y="496">start / resume / fork</text>
+  <rect class="core" x="644" y="434" width="260" height="88"/>
+  <text class="text" x="670" y="468">CodexThread</text>
+  <text class="small" x="670" y="496">submit input / stream events</text>
+
+  <rect class="warn" x="392" y="606" width="396" height="54"/>
+  <text class="small" x="420" y="638">边界不变量：入口层不复制 runtime loop，只翻译输入并展示事件。</text>
+
+  <path class="arrow" d="M338 224 C386 224 408 455 214 478"/>
+  <path class="arrow" d="M590 270 L590 374 L474 478"/>
+  <path class="arrow" d="M972 270 C918 348 858 412 904 478"/>
+  <path class="arrow" d="M474 478 L644 478"/>
+  <path class="dash" d="M590 522 L590 606"/>
+  <text class="tiny" x="98" y="294">main.rs dispatch</text>
+  <text class="tiny" x="498" y="294">run_main + App</text>
+  <text class="tiny" x="868" y="294">MessageProcessor</text>
+  <text class="tiny" x="496" y="416">统一创建会话</text>
+  <text class="tiny" x="706" y="416">统一接收输入与事件</text>
+</svg>

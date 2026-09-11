@@ -409,8 +409,8 @@ fork spawn 是从父线程复制一段模型上下文：
 
 ## 图示
 
-- [Multi-agent control plane](../../image/core/multi-agent-control-v1.svg)：作为开篇综合图，放在“读完你应掌握什么”下方，用来建立工具入口、控制面、registry 和父子 thread 的整体关系。
-- [Spawn agent lifecycle](../../image/core/spawn-agent-lifecycle-v1.svg)：放在 RAII 代码证据和“`AgentControl` 做容量和身份登记”附近，用来对照 spawn/fork 的关键动作和失败释放路径。
+- [Multi-agent control plane](../../image/core/multi-agent-control-v1.png)：作为开篇综合图，放在“读完你应掌握什么”下方，用来建立工具入口、控制面、registry 和父子 thread 的整体关系。
+- [Spawn agent lifecycle](../../image/core/spawn-agent-lifecycle-v1.png)：放在 RAII 代码证据和“`AgentControl` 做容量和身份登记”附近，用来对照 spawn/fork 的关键动作和失败释放路径。
 
 ## 复设计练习
 

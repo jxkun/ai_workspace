@@ -370,8 +370,8 @@ Line range: `repo/codex/codex-rs/core/src/mcp_tool_call.rs:538-590`
 
 ## 图示
 
-- [Core 扩展入口](../../image/core/core-extension-surfaces-v1.svg)：作为开篇综合图，放在“读完你应掌握什么”下方，用来建立外部能力进入 core 的全局模型。
-- [MCP 工具曝光与调用](../../image/core/mcp-tool-exposure-v1.svg)：放在“MCP tool 进入 core tool registry”附近，用来解释 direct/deferred/hidden、approval 和 result sanitize。
+- [Core 扩展入口](../../image/core/core-extension-surfaces-v1.png)：作为开篇综合图，放在“读完你应掌握什么”下方，用来建立外部能力进入 core 的全局模型。
+- [MCP 工具曝光与调用](../../image/core/mcp-tool-exposure-v1.png)：放在“MCP tool 进入 core tool registry”附近，用来解释 direct/deferred/hidden、approval 和 result sanitize。
 
 ## 复设计练习
 

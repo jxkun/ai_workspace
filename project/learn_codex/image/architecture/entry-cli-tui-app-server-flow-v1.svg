@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="760" viewBox="0 0 1240 760" role="img" aria-labelledby="title desc">
+  <title id="title">CLI TUI app-server entry flow</title>
+  <desc id="desc">A Codex request flows from CLI dispatch through TUI or app-server request processors into ThreadManager and CodexThread.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .lane { fill: #eef2ff; stroke: #64748b; stroke-width: 1.4; rx: 10; }
+      .client { fill: #ffffff; stroke: #334155; stroke-width: 1.4; rx: 8; }
+      .server { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 1.5; rx: 8; }
+      .core { fill: #ecfdf5; stroke: #047857; stroke-width: 1.6; rx: 8; }
+      .risk { fill: #fff7ed; stroke: #c2410c; stroke-width: 1.4; rx: 8; }
+      .text { font-family: Inter, Arial, sans-serif; fill: #0f172a; font-size: 20px; }
+      .small { font-family: Inter, Arial, sans-serif; fill: #334155; font-size: 15px; }
+      .tiny { font-family: Inter, Arial, sans-serif; fill: #475569; font-size: 13px; }
+      .arrow { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #64748b; stroke-width: 1.6; fill: none; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1240" height="760"/>
+  <text class="text" x="54" y="52">Entry Deep Dive: 从 CLI/TUI/app-server 到 Core thread / turn</text>
+  <text class="small" x="54" y="82">入口层只做参数、连接、协议和 UI 状态收敛；线程生命周期和 turn 执行在 Core 边界内完成。</text>
+
+  <rect class="lane" x="46" y="116" width="1148" height="154"/>
+  <text class="small" x="68" y="148">1. CLI dispatch</text>
+  <rect class="client" x="78" y="176" width="230" height="64"/>
+  <text class="text" x="104" y="214">MultitoolCli</text>
+  <rect class="client" x="382" y="176" width="230" height="64"/>
+  <text class="text" x="408" y="214">Subcommand</text>
+  <rect class="client" x="686" y="176" width="230" height="64"/>
+  <text class="text" x="712" y="214">run_interactive_tui</text>
+
+  <rect class="lane" x="46" y="320" width="1148" height="164"/>
+  <text class="small" x="68" y="352">2. TUI / app-server client</text>
+  <rect class="client" x="78" y="386" width="250" height="66"/>
+  <text class="text" x="104" y="424">AppServerSession</text>
+  <rect class="server" x="428" y="386" width="250" height="66"/>
+  <text class="text" x="454" y="424">ClientRequest</text>
+  <rect class="server" x="778" y="386" width="250" height="66"/>
+  <text class="text" x="804" y="424">MessageProcessor</text>
+
+  <rect class="lane" x="46" y="536" width="1148" height="138"/>
+  <text class="small" x="68" y="568">3. Core boundary</text>
+  <rect class="core" x="180" y="602" width="250" height="56"/>
+  <text class="text" x="210" y="638">ThreadManager</text>
+  <rect class="core" x="520" y="602" width="250" height="56"/>
+  <text class="text" x="550" y="638">CodexThread</text>
+  <rect class="risk" x="860" y="594" width="250" height="72"/>
+  <text class="small" x="892" y="624">入口 guard</text>
+  <text class="tiny" x="892" y="648">TTY / config / protocol / input</text>
+
+  <path class="arrow" d="M308 208 L382 208"/>
+  <path class="arrow" d="M612 208 L686 208"/>
+  <path class="arrow" d="M801 240 C728 306 572 340 203 386"/>
+  <path class="arrow" d="M328 419 L428 419"/>
+  <path class="arrow" d="M678 419 L778 419"/>
+  <path class="arrow" d="M903 452 C847 518 650 564 430 630"/>
+  <path class="arrow" d="M430 630 L520 630"/>
+  <path class="dash" d="M903 452 C1012 498 1015 560 985 594"/>
+  <text class="tiny" x="108" y="258">parse + root overrides</text>
+  <text class="tiny" x="438" y="258">exec / review / TUI / app-server</text>
+  <text class="tiny" x="128" y="474">embedded or remote client</text>
+  <text class="tiny" x="468" y="474">thread/start / turn/start</text>
+  <text class="tiny" x="806" y="474">processor dispatch</text>
+</svg>

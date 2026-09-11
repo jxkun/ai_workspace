@@ -347,8 +347,8 @@ pub(crate) async fn handle_retryable_response_stream_error(
 
 ## 图示
 
-- [Config 到 Turn 的流转](../../image/core/config-to-turn-v1.svg)：作为开篇综合图，放在“读完你应掌握什么”下方，用来建立配置、环境、step 和模型请求的全局关系。
-- [Model Client 请求路径](../../image/core/model-client-request-v1.svg)：放在“`Prompt` 变成 Responses API request”附近，用来解释请求构造、metadata 和传输分支。
+- [Config 到 Turn 的流转](../../image/core/config-to-turn-v1.png)：作为开篇综合图，放在“读完你应掌握什么”下方，用来建立配置、环境、step 和模型请求的全局关系。
+- [Model Client 请求路径](../../image/core/model-client-request-v1.png)：放在“`Prompt` 变成 Responses API request”附近，用来解释请求构造、metadata 和传输分支。
 
 ## 复设计练习
 

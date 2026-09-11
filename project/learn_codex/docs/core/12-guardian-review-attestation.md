@@ -426,8 +426,8 @@ full 模式用于首次审查或 cursor 失效；delta 模式只追加上次审�
 
 ## 图示
 
-- [Guardian review flow](../../image/core/guardian-review-flow-v1.svg)：作为开篇综合图，放在“读完你应掌握什么”下方，用来对照 approval 路由、prompt 证据、review session 和 assessment 回写。
-- [Attestation boundary](../../image/core/attestation-boundary-v1.svg)：放在“Attestation 在请求侧补充信任信号”附近，用来区分请求证明和审批审查。
+- [Guardian review flow](../../image/core/guardian-review-flow-v1.png)：作为开篇综合图，放在“读完你应掌握什么”下方，用来对照 approval 路由、prompt 证据、review session 和 assessment 回写。
+- [Attestation boundary](../../image/core/attestation-boundary-v1.png)：放在“Attestation 在请求侧补充信任信号”附近，用来区分请求证明和审批审查。
 
 ## 复设计练习
 

@@ -19,13 +19,13 @@ image/
 
 ## 文件约定
 
-- 推荐格式：`svg`；需要兼容不支持 SVG 的场景时，再导出 `png`。
+- 推荐交付格式：Markdown 正式引用 `png`；同目录保留同名 `svg` 作为可编辑源。
 - 推荐命名：`<topic>-<purpose>-v<version>.<ext>`。
 - 如果图片由 DSL 或脚本生成，源文件放在同目录，例如 `.mmd`、`.dot`、`.excalidraw` 或 `.drawio`。
 - Markdown 引用使用相对路径，例如：
 
 ```markdown
-![Runtime loop](../image/runtime-loop/runtime-loop-main-v1.svg)
+![Runtime loop](../image/runtime-loop/runtime-loop-main-v1.png)
 ```
 
 ## 禁止事项
@@ -37,11 +37,11 @@ image/
 
 ## 质量要求
 
-- 正式图示优先使用 SVG 矢量图，保证缩放时文字和线条保持清晰。
+- 正式图示的 Markdown 引用优先使用 PNG，避免部分渲染器无法展示 SVG；SVG 源文件保留用于继续编辑和高质量再导出。
 - 必须使用统一字体、稳定间距、清晰分组和足够留白。
 - 连接线优先使用平滑曲线或规则折线，避免手写像素线条。
 - 文本字号必须可读，避免把长段正文塞进图片。
-- 若必须交付 PNG，应从矢量源或高分辨率画布导出，并检查抗锯齿效果。
+- PNG 必须从矢量源或高分辨率画布导出，并检查抗锯齿效果。
 - 用户指出图片观感问题时，优先新增 `v2`、`v3` 等更高质量版本并更新文档引用；旧图可保留作兼容参考。
 
 ## 验收清单

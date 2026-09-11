@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="760" viewBox="0 0 1240 760" role="img" aria-labelledby="title desc">
+  <title id="title">Protocol rollout thread store support flow</title>
+  <desc id="desc">Support layer protocol, rollout, thread store, and context fragments preserve Codex turn state across execution and resume.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 1.4; rx: 8; }
+      .proto { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 1.5; rx: 8; }
+      .store { fill: #f0fdf4; stroke: #15803d; stroke-width: 1.5; rx: 8; }
+      .ctx { fill: #fdf4ff; stroke: #a21caf; stroke-width: 1.5; rx: 8; }
+      .risk { fill: #fff7ed; stroke: #c2410c; stroke-width: 1.4; rx: 8; }
+      .text { font-family: Inter, Arial, sans-serif; fill: #0f172a; font-size: 20px; }
+      .small { font-family: Inter, Arial, sans-serif; fill: #334155; font-size: 15px; }
+      .tiny { font-family: Inter, Arial, sans-serif; fill: #475569; font-size: 13px; }
+      .arrow { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #64748b; stroke-width: 1.6; fill: none; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1240" height="760"/>
+  <text class="text" x="54" y="52">Support Deep Dive: protocol -> rollout -> thread-store -> context</text>
+  <text class="small" x="54" y="82">Support 层把一次 turn 的输入、事件、历史和上下文变成可恢复、可审计、可重放的事实。</text>
+
+  <rect class="proto" x="68" y="144" width="230" height="82"/>
+  <text class="text" x="98" y="178">Submission</text>
+  <text class="small" x="98" y="204">id / op / trace</text>
+  <rect class="proto" x="368" y="144" width="230" height="82"/>
+  <text class="text" x="398" y="178">Op</text>
+  <text class="small" x="398" y="204">TurnInput / approvals</text>
+  <rect class="proto" x="668" y="144" width="230" height="82"/>
+  <text class="text" x="698" y="178">EventMsg</text>
+  <text class="small" x="698" y="204">turn / tool / status</text>
+
+  <rect class="store" x="214" y="330" width="250" height="82"/>
+  <text class="text" x="244" y="364">RolloutItem</text>
+  <text class="small" x="244" y="390">history fact units</text>
+  <rect class="store" x="542" y="330" width="250" height="82"/>
+  <text class="text" x="572" y="364">Rollout JSONL</text>
+  <text class="small" x="572" y="390">decode / parse / ordinal</text>
+  <rect class="store" x="870" y="330" width="250" height="82"/>
+  <text class="text" x="900" y="364">ThreadStore</text>
+  <text class="small" x="900" y="390">persist / load / fork</text>
+
+  <rect class="ctx" x="232" y="540" width="280" height="82"/>
+  <text class="text" x="262" y="574">ContextualUserFragment</text>
+  <text class="small" x="262" y="600">markers / content kind</text>
+  <rect class="ctx" x="704" y="540" width="280" height="82"/>
+  <text class="text" x="734" y="574">MemoriesExtension</text>
+  <text class="small" x="734" y="600">prompt + tools</text>
+
+  <rect class="risk" x="430" y="674" width="380" height="50"/>
+  <text class="small" x="462" y="705">失败边界：协议漂移、JSONL 解析失败、store 不支持、marker 冲突</text>
+
+  <path class="arrow" d="M298 185 L368 185"/>
+  <path class="arrow" d="M598 185 L668 185"/>
+  <path class="arrow" d="M783 226 C734 278 612 314 464 371"/>
+  <path class="arrow" d="M464 371 L542 371"/>
+  <path class="arrow" d="M792 371 L870 371"/>
+  <path class="dash" d="M339 412 L372 540"/>
+  <path class="dash" d="M995 412 C963 486 906 524 844 540"/>
+  <path class="dash" d="M512 581 L704 581"/>
+  <path class="dash" d="M620 622 L620 674"/>
+  <text class="tiny" x="106" y="252">request correlation</text>
+  <text class="tiny" x="388" y="252">routing semantics</text>
+  <text class="tiny" x="690" y="252">user/model visible output</text>
+  <text class="tiny" x="556" y="438">persistent replay record</text>
+</svg>

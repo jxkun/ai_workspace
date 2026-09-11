@@ -81,8 +81,8 @@
 
 **图示清单：**
 
-- `image/core/codex-core-module-map-v1.svg`
-- `image/core/core-crate-boundary-v1.svg`
+- `image/core/codex-core-module-map-v1.png`
+- `image/core/core-crate-boundary-v1.png`
 
 **复设计练习：** 如果你要设计一个本地 coding agent core crate，你会暴露哪些 public API？哪些模块必须保持 private？
 
@@ -110,7 +110,7 @@
 
 **图示清单：**
 
-- `image/core/thread-lifecycle-v1.svg`
+- `image/core/thread-lifecycle-v1.png`
 
 **复设计练习：** 设计一个 `ThreadManager` API，让上层可以 start/resume/fork/thread input，同时不暴露 session 内部细节。
 
@@ -143,8 +143,8 @@
 
 **图示清单：**
 
-- `image/core/session-turn-loop-v1.svg`
-- `image/core/task-types-v1.svg`
+- `image/core/session-turn-loop-v1.png`
+- `image/core/task-types-v1.png`
 
 **复设计练习：** 设计一个最小 agent loop：输入队列、模型调用、工具调用、事件输出、终止条件分别是什么？
 
@@ -175,8 +175,8 @@
 
 **图示清单：**
 
-- `image/core/context-world-state-v1.svg`
-- `image/core/context-fragment-lifecycle-v1.svg`
+- `image/core/context-world-state-v1.png`
+- `image/core/context-fragment-lifecycle-v1.png`
 
 **复设计练习：** 设计一个上下文注入系统，要求每个片段有大小上限、来源清晰、可增量更新。
 
@@ -209,8 +209,8 @@
 
 **图示清单：**
 
-- `image/core/tool-runtime-v1.svg`
-- `image/core/tool-router-handler-v1.svg`
+- `image/core/tool-runtime-v1.png`
+- `image/core/tool-router-handler-v1.png`
 
 **复设计练习：** 设计一个工具系统，要求支持内置工具、动态工具、MCP 工具和权限审批。
 
@@ -243,8 +243,8 @@
 
 **图示清单：**
 
-- `image/core/unified-exec-lifecycle-v1.svg`
-- `image/core/exec-output-buffer-v1.svg`
+- `image/core/unified-exec-lifecycle-v1.png`
+- `image/core/exec-output-buffer-v1.png`
 
 **复设计练习：** 设计一个命令执行器，支持超时、流式输出、stdin、进程复用和安全策略。
 
@@ -278,8 +278,8 @@
 
 **图示清单：**
 
-- `image/core/safety-approval-decision-v1.svg`
-- `image/core/sandbox-policy-boundary-v1.svg`
+- `image/core/safety-approval-decision-v1.png`
+- `image/core/sandbox-policy-boundary-v1.png`
 
 **复设计练习：** 设计一个命令审批系统，要求支持默认策略、用户临时授权和命令前缀白名单。
 
@@ -311,8 +311,8 @@
 
 **图示清单：**
 
-- `image/core/apply-patch-flow-v1.svg`
-- `image/core/patch-safety-route-v1.svg`
+- `image/core/apply-patch-flow-v1.png`
+- `image/core/patch-safety-route-v1.png`
 
 **复设计练习：** 设计一个安全 patch 系统，要求可解析、可定位、可拒绝危险路径、可报告失败原因。
 
@@ -345,8 +345,8 @@
 
 **图示清单：**
 
-- `image/core/config-to-turn-v1.svg`
-- `image/core/model-client-request-v1.svg`
+- `image/core/config-to-turn-v1.png`
+- `image/core/model-client-request-v1.png`
 
 **复设计练习：** 设计一个配置系统，使同一套 core 可以被 CLI、TUI 和 app-server 复用。
 
@@ -379,8 +379,8 @@
 
 **图示清单：**
 
-- `image/core/core-extension-surfaces-v1.svg`
-- `image/core/mcp-tool-exposure-v1.svg`
+- `image/core/core-extension-surfaces-v1.png`
+- `image/core/mcp-tool-exposure-v1.png`
 
 **复设计练习：** 设计一个插件系统，让外部能力既能注入提示，也能贡献工具，但不能绕过权限边界。
 
@@ -413,8 +413,8 @@
 
 **图示清单：**
 
-- `image/core/multi-agent-control-v1.svg`
-- `image/core/spawn-agent-lifecycle-v1.svg`
+- `image/core/multi-agent-control-v1.png`
+- `image/core/spawn-agent-lifecycle-v1.png`
 
 **复设计练习：** 设计一个多 agent 执行框架，说明主 agent、子 agent、消息、状态和权限如何隔离。
 
@@ -448,8 +448,8 @@
 
 **图示清单：**
 
-- `image/core/rollout-compaction-resume-v1.svg`
-- `image/core/thread-reconstruction-v1.svg`
+- `image/core/rollout-compaction-resume-v1.png`
+- `image/core/thread-reconstruction-v1.png`
 
 **复设计练习：** 设计一个会话持久化系统，要求支持恢复、裁剪历史、生成摘要和保留审计线索。
 
@@ -481,8 +481,8 @@
 
 **图示清单：**
 
-- `image/core/guardian-review-flow-v1.svg`
-- `image/core/attestation-boundary-v1.svg`
+- `image/core/guardian-review-flow-v1.png`
+- `image/core/attestation-boundary-v1.png`
 
 **复设计练习：** 设计一个自动审查机制，让 agent 行为在执行前后都有可解释证据。
 
@@ -515,8 +515,8 @@
 
 **图示清单：**
 
-- `image/core/realtime-context-flow-v1.svg`
-- `image/core/image-preparation-v1.svg`
+- `image/core/realtime-context-flow-v1.png`
+- `image/core/image-preparation-v1.png`
 
 **复设计练习：** 设计一个多模态 agent 输入系统，要求支持图片、实时上下文和普通文本共存。
 
@@ -551,8 +551,8 @@
 
 **图示清单：**
 
-- `image/core/turn-observability-v1.svg`
-- `image/core/supporting-utils-map-v1.svg`
+- `image/core/turn-observability-v1.png`
+- `image/core/supporting-utils-map-v1.png`
 
 **复设计练习：** 设计一套 agent runtime 观测字段，要求能回答一次 turn 的耗时、模型、工具、diff 和错误来源。
 
@@ -578,16 +578,16 @@
 **讲解重点：**
 
 - 关键代码片段如何证明 thread、turn、step、tool、sandbox、agent、rollout 的边界。
-- 每段代码如何连接到既有专题文档和 SVG 图示。
+- 每段代码如何连接到既有专题文档和 PNG 图示（SVG 源文件保留）。
 - 为什么只贴文件路径不足以支撑不看代码的理解目标。
 
 **图示清单：**
 
-- `image/core/session-turn-loop-v1.svg`
-- `image/core/tool-runtime-v1.svg`
-- `image/core/context-world-state-v1.svg`
-- `image/core/multi-agent-control-v1.svg`
-- `image/core/rollout-compaction-resume-v1.svg`
+- `image/core/session-turn-loop-v1.png`
+- `image/core/tool-runtime-v1.png`
+- `image/core/context-world-state-v1.png`
+- `image/core/multi-agent-control-v1.png`
+- `image/core/rollout-compaction-resume-v1.png`
 
 **复设计练习：** 基于本文代码片段设计一个最小 agent harness，说明 public API、输入路由、step 级工具冻结、统一 approval/sandbox、持久化恢复和 multi-agent 半失败回收。
 
@@ -604,7 +604,7 @@
 
 ## 读完你应掌握什么
 
-开篇综合图路径：`../../image/core/<topic-synthesis>.svg`
+开篇综合图路径：`../../image/core/<topic-synthesis>.png`
 
 开篇综合图：用 1 段文字说明它覆盖的系统位置、核心实体/状态、主路径、关键分支和源码锚点。
 
@@ -634,9 +634,9 @@
 
 | 信息单元 | 适用场景 | 完成标准 |
 | --- | --- | --- |
-| 开篇综合图 | 每篇 substantive 专题 | 在前两个 H2 内放一张本地 SVG，压缩说明系统位置、核心实体/状态、主路径和关键分支；纯索引或短报告必须写明不适用原因 |
+| 开篇综合图 | 每篇 substantive 专题 | 在前两个 H2 内放一张本地 PNG，压缩说明系统位置、核心实体/状态、主路径和关键分支；纯索引或短报告必须写明不适用原因 |
 | 端到端 trace | session、tool、config、extension、resume 等运行链路 | 能从输入一路复盘到事件、状态、持久化或后续模型输入 |
-| 直观流程图 | 每篇专题的主流程、状态变化或跨模块链路 | 本地 SVG 出现在 `## 主流程`、状态、失败或关键链路说明附近，并配一句读图说明；文末 `## 图示` 只作为索引 |
+| 直观流程图 | 每篇专题的主流程、状态变化或跨模块链路 | 本地 PNG 出现在 `## 主流程`、状态、失败或关键链路说明附近，并配一句读图说明；文末 `## 图示` 只作为索引 |
 | 决策/状态矩阵 | 审批、安全、上下文、工具曝光、恢复、multi-agent | 列出条件、分支、执行者、输出和失败语义 |
 | 跨模块契约 | 任何跨 crate、跨目录、跨线程或跨进程调用 | 写清上游输入、下游保证、不变量和破坏性变更风险 |
 | 测试证据 | 安全、恢复、权限、持久化、协议兼容等结论 | 绑定到测试文件或标注 `source-only` / `test-gap` |
@@ -753,10 +753,10 @@
 
 ## 7. 当前维护路线
 
-当前文档集按 harness-level 学习口径维护：每篇专题都有源码锚点、局部代码证据、就近 SVG 图示、失败边界和检查题答案。后续维护重点不是“补齐文件”，而是跟随 `repo/codex/` 快照变化保持证据新鲜：
+当前文档集按 harness-level 学习口径维护：每篇专题都有源码锚点、局部代码证据、就近 PNG 图示（SVG 源文件保留）、失败边界和检查题答案。后续维护重点不是“补齐文件”，而是跟随 `repo/codex/` 快照变化保持证据新鲜：
 
 1. 源码快照更新后，先复核 `docs/source-snapshot.md`，再检查 00-15 中所有 `Source:` / `Line range:` 是否仍命中当前代码。
 2. 如果 core 新增协议、事件、tool runtime、approval、sandbox、multi-agent 或 compaction 分支，优先在对应专题就近补短代码片段；[15-core-code-evidence.md](15-core-code-evidence.md) 只同步补充跨专题主干证据。
-3. 图示维护以“开篇综合图 + 细节处局部图”为准；现有 `image/core/` SVG 先复用，只有新分支无法由现有图解释时才新增图片。
+3. 图示维护以“开篇综合图 + 细节处局部图”为准；现有 `image/core/` PNG 先复用，SVG 源文件保留，只有新分支无法由现有图解释时才新增图片。
 4. 高风险链路继续用矩阵固化：配置优先级、工具曝光、审批/sandbox、rollout 恢复、多 agent 半成功回滚、图片降级等表格要跟源码行为一起更新。
 5. 每轮改动后复跑 `python3 scripts/check_core_docs.py`、`python3 /data00/home/jiangxukun/.trae/skills/source-study-docs/scripts/check_source_study_docs.py --docs-dir docs/core --source-root repo/codex --image-root image/core --complete` 和 `openspec validate harden-codex-core-docs --strict`；机械通过后仍需人工从开篇到检查题做一次阅读复核。

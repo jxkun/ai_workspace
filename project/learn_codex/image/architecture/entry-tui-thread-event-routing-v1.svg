@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="760" viewBox="0 0 1240 760" role="img" aria-labelledby="title desc">
+  <title id="title">TUI thread event routing</title>
+  <desc id="desc">TUI routes user input through ChatWidget and AppServerSession, receives buffered thread events, and switches active and side threads.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .ui { fill: #ffffff; stroke: #334155; stroke-width: 1.4; rx: 8; }
+      .state { fill: #eef2ff; stroke: #4f46e5; stroke-width: 1.5; rx: 8; }
+      .server { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 1.5; rx: 8; }
+      .risk { fill: #fff7ed; stroke: #c2410c; stroke-width: 1.4; rx: 8; }
+      .text { font-family: Inter, Arial, sans-serif; fill: #0f172a; font-size: 20px; }
+      .small { font-family: Inter, Arial, sans-serif; fill: #334155; font-size: 15px; }
+      .tiny { font-family: Inter, Arial, sans-serif; fill: #475569; font-size: 13px; }
+      .arrow { stroke: #475569; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #64748b; stroke-width: 1.6; fill: none; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1240" height="760"/>
+  <text class="text" x="54" y="52">Entry Part: TUI thread event routing</text>
+  <text class="small" x="54" y="82">TUI 管输入、展示和 thread 切换；Core 执行状态通过 app-server event 回来。</text>
+
+  <rect class="ui" x="74" y="138" width="250" height="76"/>
+  <text class="text" x="106" y="172">ChatWidget</text>
+  <text class="small" x="106" y="198">composer / images / mentions</text>
+  <rect class="ui" x="398" y="138" width="250" height="76"/>
+  <text class="text" x="430" y="172">AppCommand</text>
+  <text class="small" x="430" y="198">user message / shell command</text>
+  <rect class="server" x="722" y="138" width="250" height="76"/>
+  <text class="text" x="754" y="172">AppServerSession</text>
+  <text class="small" x="754" y="198">request handle / thread params</text>
+
+  <rect class="state" x="116" y="342" width="250" height="78"/>
+  <text class="text" x="148" y="376">ThreadEventChannel</text>
+  <text class="small" x="148" y="402">receiver + buffered store</text>
+  <rect class="state" x="492" y="342" width="250" height="78"/>
+  <text class="text" x="524" y="376">active_thread_id</text>
+  <text class="small" x="524" y="402">displayed thread source</text>
+  <rect class="state" x="868" y="342" width="250" height="78"/>
+  <text class="text" x="900" y="376">side_threads</text>
+  <text class="small" x="900" y="402">agent navigation / failover</text>
+
+  <rect class="server" x="210" y="554" width="280" height="78"/>
+  <text class="text" x="242" y="588">ThreadBufferedEvent</text>
+  <text class="small" x="242" y="614">notification / request / history</text>
+  <rect class="risk" x="714" y="554" width="320" height="78"/>
+  <text class="text" x="746" y="588">Routing guards</text>
+  <text class="small" x="746" y="614">shutdown failover / queued input / image support</text>
+
+  <path class="arrow" d="M324 176 L398 176"/>
+  <path class="arrow" d="M648 176 L722 176"/>
+  <path class="arrow" d="M847 214 C785 288 698 318 617 342"/>
+  <path class="dash" d="M199 214 C206 280 224 318 241 342"/>
+  <path class="arrow" d="M241 420 L350 554"/>
+  <path class="arrow" d="M617 420 L490 554"/>
+  <path class="arrow" d="M993 420 C996 492 948 532 874 554"/>
+  <path class="dash" d="M350 632 C462 692 734 690 874 632"/>
+  <text class="tiny" x="126" y="240">input validation and queue</text>
+  <text class="tiny" x="430" y="240">thread-scoped op</text>
+  <text class="tiny" x="754" y="240">start/fork/resume thread</text>
+  <text class="tiny" x="426" y="454">events replay into visible UI</text>
+</svg>

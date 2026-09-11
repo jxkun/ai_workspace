@@ -4,20 +4,20 @@
 
 本文基于本地源码快照：`repo/codex/`。版本锚点见 [source-snapshot.md](source-snapshot.md)。
 
-![Codex harness learning roadmap](../image/learning-roadmap/codex-harness-roadmap-v2.svg)
+![Codex harness learning roadmap](../image/learning-roadmap/codex-harness-roadmap-v2.png)
 
 ## 1. 先建立全局心智模型
 
 可以先把 Codex harness 理解成四层：
 
-![Codex harness source layer map](../image/learning-roadmap/codex-harness-layer-map-v2.svg)
+![Codex harness source layer map](../image/learning-roadmap/codex-harness-layer-map-v2.png)
 
 | 层级 | 你要理解的问题 | 先看的源码入口 |
 | --- | --- | --- |
 | Entry | 用户从哪里进入系统，请求如何变成内部会话动作 | `repo/codex/codex-rs/cli/src/main.rs`、`repo/codex/codex-rs/tui/src/app.rs`、`repo/codex/codex-rs/app-server/src/lib.rs` |
 | Core | 一次 turn 如何被驱动，模型、工具、事件如何串起来 | `repo/codex/codex-rs/core/src/session/`、`repo/codex/codex-rs/core/src/tasks/`、`repo/codex/codex-rs/core/src/tools/` |
 | Support | 会话、上下文、配置、rollout、memory 如何支撑主循环 | `repo/codex/codex-rs/protocol/src/`、`repo/codex/codex-rs/rollout/src/`、`repo/codex/codex-rs/context-fragments/src/`、`repo/codex/codex-rs/ext/memories/src/` |
-| Extension | 外部工具、sandbox、MCP、skills、plugins、hooks 如何接入 | `repo/codex/codex-rs/sandboxing/src/`、`repo/codex/codex-rs/apply-patch/src/`、`repo/codex/codex-rs/core/src/mcp.rs`、`repo/codex/codex-rs/core/src/plugins/`、`repo/codex/codex-rs/core/src/hook_runtime.rs` |
+| Extension | skills、plugins、MCP、hooks、connectors 如何声明、装载、过滤并接入 Core | `repo/codex/codex-rs/skills/src/`、`repo/codex/codex-rs/plugin/src/`、`repo/codex/codex-rs/core-plugins/src/`、`repo/codex/codex-rs/codex-mcp/src/`、`repo/codex/codex-rs/hooks/src/`、`repo/codex/codex-rs/connectors/src/` |
 
 学习时不要一开始就从最大文件逐行读。更好的方式是先跟踪“一次用户输入如何变成一个 turn”，再逐步打开工具执行、安全审批、上下文恢复这些分支。
 
@@ -87,13 +87,24 @@
 
 **产出：**
 
-- `docs/harness-overview.md`
-- `image/architecture/harness-entry-map-v1.png`
+- `docs/entry/README.md`
+- `docs/entry/00-entry-map.md`
+- `docs/entry/01-cli-tui-app-server-flow.md`
+- `docs/entry/02-cli-command-surface.md`
+- `docs/entry/03-tui-thread-event-routing.md`
+- `docs/entry/04-app-server-json-rpc-control-plane.md`
+- `image/architecture/harness-entry-layer-v1.png`
+- `image/architecture/entry-cli-tui-app-server-flow-v1.png`
+- `image/architecture/entry-cli-command-surface-v1.png`
+- `image/architecture/entry-tui-thread-event-routing-v1.png`
+- `image/architecture/entry-app-server-json-rpc-control-plane-v1.png`
 
 **完成标准：**
 
 - 能画出 CLI/TUI/app-server 到 core session 的路径。
 - 能说明 `app-server` 是控制面入口之一，不只是 CLI 包装。
+- 能复盘 CLI dispatch、TUI `AppServerSession`、app-server `thread/start` / `turn/start` 到 Core 的入口链路。
+- 能分别解释 CLI 命令面、TUI 线程事件路由和 app-server JSON-RPC 控制面的分工。
 
 ### Stage 2：Core runtime，一次 turn 如何跑完
 
@@ -222,13 +233,17 @@
 
 **产出：**
 
-- `docs/state-and-memory.md`
-- `image/state-memory/thread-rollout-memory-v1.png`
+- `docs/support/README.md`
+- `docs/support/00-support-map.md`
+- `docs/support/01-protocol-rollout-thread-store.md`
+- `image/state-memory/harness-support-layer-v1.png`
+- `image/state-memory/support-protocol-rollout-thread-store-v1.png`
 
 **完成标准：**
 
 - 能分清 rollout、thread store、context fragments、memory extension 的职责。
 - 能解释恢复会话时哪些信息来自持久化，哪些来自即时上下文。
+- 能复盘 `Submission` / `Op` / `EventMsg`、`RolloutItem`、JSONL 解码和 `ThreadStore` 的支撑链路。
 
 ### Stage 6：扩展点，理解 Codex 如何被定制
 
@@ -255,13 +270,17 @@
 
 **产出：**
 
-- `docs/extension-points.md`
-- `image/extension-points/extension-surfaces-v1.png`
+- `docs/extension/README.md`
+- `docs/extension/00-extension-map.md`
+- `docs/extension/01-skills-plugins-mcp-hooks.md`
+- `image/extension-points/harness-extension-layer-v1.png`
+- `image/extension-points/extension-skills-plugins-mcp-hooks-v1.png`
 
 **完成标准：**
 
 - 能区分 prompt/thread context、AGENTS.md、skill、plugin、MCP、hook 的作用范围。
 - 能给出一个插件或 skill 从发现到注入上下文的源码路径。
+- 能复盘 skill 选择、plugin bundle、MCP binding / prepared call、hook result 和 connector projection 的扩展链路。
 
 ### Stage 7：案例复盘和最小实验
 
@@ -307,12 +326,12 @@
 
 | 阶段 | Markdown 产物 | 图片产物 |
 | --- | --- | --- |
-| Stage 1 | `docs/harness-overview.md` | `image/architecture/harness-entry-map-v1.png` |
+| Stage 1 | `docs/entry/00-entry-map.md`、`docs/entry/01-cli-tui-app-server-flow.md`、`docs/entry/02-cli-command-surface.md`、`docs/entry/03-tui-thread-event-routing.md`、`docs/entry/04-app-server-json-rpc-control-plane.md` | `image/architecture/harness-entry-layer-v1.png`、`image/architecture/entry-cli-tui-app-server-flow-v1.png`、`image/architecture/entry-cli-command-surface-v1.png`、`image/architecture/entry-tui-thread-event-routing-v1.png`、`image/architecture/entry-app-server-json-rpc-control-plane-v1.png` |
 | Stage 2 | `docs/runtime-loop-analysis.md` | `image/runtime-loop/runtime-loop-main-v1.png` |
 | Stage 3 | `docs/tool-sandbox-analysis.md` | `image/tool-sandbox/tool-execution-approval-v1.png` |
 | Stage 4 | `docs/protocol-and-events.md` | `image/protocol-events/protocol-event-flow-v1.png` |
-| Stage 5 | `docs/state-and-memory.md` | `image/state-memory/thread-rollout-memory-v1.png` |
-| Stage 6 | `docs/extension-points.md` | `image/extension-points/extension-surfaces-v1.png` |
+| Stage 5 | `docs/support/00-support-map.md`、`docs/support/01-protocol-rollout-thread-store.md` | `image/state-memory/harness-support-layer-v1.png`、`image/state-memory/support-protocol-rollout-thread-store-v1.png` |
+| Stage 6 | `docs/extension/00-extension-map.md`、`docs/extension/01-skills-plugins-mcp-hooks.md` | `image/extension-points/harness-extension-layer-v1.png`、`image/extension-points/extension-skills-plugins-mcp-hooks-v1.png` |
 | Stage 7 | `docs/case-studies/*.md` | 按案例放入对应主题目录 |
 
 ## 6. 不建议一开始做什么
@@ -333,4 +352,4 @@
 
 ## 8. 后续任务建议
 
-下一轮最适合从 `docs/harness-overview.md` 开始，目标是画出 Entry 层到 Core 层的第一张真实调用链图。完成这个总览后，再进入 runtime loop 深挖。
+当前四层入口已经具备：`docs/entry/README.md`、`docs/core/README.md`、`docs/support/README.md`、`docs/extension/README.md`。下一轮最适合从 Stage 4 的 `docs/protocol-and-events.md` 或 Entry/app-server 子专题继续深挖，把 UI/app-server 事件投影与 Core event stream 进一步串起来。

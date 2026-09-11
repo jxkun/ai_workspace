@@ -232,7 +232,7 @@ let sampling_request_result: CodexResult<_> = async {
 
 ![Session turn loop](../../image/core/session-turn-loop-v1.png)
 
-这张图按 `input -> task -> turn -> step -> model stream -> tool follow-up -> event/rollout` 阅读。下面 1 到 6 步对应图中的主链路节点；特殊 task 类型可再对照 `task-types-v1.svg`。无需代码片段：主流程总述引用上一节的协议、任务接口和 `run_turn` 代码证据。
+这张图按 `input -> task -> turn -> step -> model stream -> tool follow-up -> event/rollout` 阅读。下面 1 到 6 步对应图中的主链路节点；特殊 task 类型可再对照 `task-types-v1.png`。无需代码片段：主流程总述引用上一节的协议、任务接口和 `run_turn` 代码证据。
 
 ### 1. 输入先进入队列
 
