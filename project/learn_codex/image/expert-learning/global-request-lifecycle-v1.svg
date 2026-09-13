@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f8fafc"/>
+  <text x="70" y="64" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#172033">Global Request Lifecycle</text>
+  <text x="70" y="102" font-family="Inter, Arial, sans-serif" font-size="17" fill="#5d6b82">One user request crosses four layers before it becomes durable history and visible events.</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="70" y="160" width="230" height="330" rx="10" fill="#eaf2ff" stroke="#7ea7d8" stroke-width="2"/>
+    <text x="185" y="198" text-anchor="middle" font-size="24" font-weight="700" fill="#1f4d7a">Entry</text>
+    <text x="185" y="235" text-anchor="middle" font-size="16" fill="#36556f">CLI / TUI / app-server</text>
+    <text x="185" y="264" text-anchor="middle" font-size="16" fill="#36556f">turn/start or command</text>
+    <rect x="370" y="160" width="230" height="330" rx="10" fill="#eaf8ef" stroke="#80b68e" stroke-width="2"/>
+    <text x="485" y="198" text-anchor="middle" font-size="24" font-weight="700" fill="#22603a">Core</text>
+    <text x="485" y="235" text-anchor="middle" font-size="16" fill="#3f674d">CodexThread</text>
+    <text x="485" y="264" text-anchor="middle" font-size="16" fill="#3f674d">Session / run_turn</text>
+    <text x="485" y="293" text-anchor="middle" font-size="16" fill="#3f674d">model and tools</text>
+    <rect x="670" y="160" width="230" height="330" rx="10" fill="#fff5e8" stroke="#d9a441" stroke-width="2"/>
+    <text x="785" y="198" text-anchor="middle" font-size="24" font-weight="700" fill="#7a4f00">Support</text>
+    <text x="785" y="235" text-anchor="middle" font-size="16" fill="#735927">protocol events</text>
+    <text x="785" y="264" text-anchor="middle" font-size="16" fill="#735927">rollout JSONL</text>
+    <text x="785" y="293" text-anchor="middle" font-size="16" fill="#735927">thread store</text>
+    <rect x="970" y="160" width="230" height="330" rx="10" fill="#f1edff" stroke="#a995d6" stroke-width="2"/>
+    <text x="1085" y="198" text-anchor="middle" font-size="24" font-weight="700" fill="#58418a">Extension</text>
+    <text x="1085" y="235" text-anchor="middle" font-size="16" fill="#665389">skills / plugins</text>
+    <text x="1085" y="264" text-anchor="middle" font-size="16" fill="#665389">MCP / hooks</text>
+    <text x="1085" y="293" text-anchor="middle" font-size="16" fill="#665389">connectors / agents</text>
+  </g>
+  <g stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M300 325 H370"/>
+    <path d="M600 325 H670"/>
+    <path d="M900 325 H970"/>
+    <path d="M1085 490 C1085 590 485 590 485 490"/>
+  </g>
+  <text x="640" y="620" font-family="Inter, Arial, sans-serif" font-size="18" text-anchor="middle" fill="#334155">Reader model: entry routes intent, core owns behavior, support keeps history, extension adds capabilities.</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

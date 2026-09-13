@@ -1,0 +1,21 @@
+modules:
+  expert_learning_docs:
+    status: completed
+    outputs:
+      - docs/expert-learning/README.md
+      - docs/expert-learning/01-global-model.md
+      - docs/expert-learning/02-core-runtime-loop.md
+      - docs/expert-learning/03-tools-safety-patch.md
+      - docs/expert-learning/04-state-protocol-memory.md
+      - docs/expert-learning/05-extension-system.md
+      - docs/expert-learning/exercises.md
+      - docs/expert-learning/expert-checklist.md
+  expert_learning_images:
+    status: completed
+    outputs:
+      - image/expert-learning/*.svg
+      - image/expert-learning/*.png
+  validation:
+    status: completed
+    outputs:
+      - scripts/check_expert_learning_docs.py

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#fbfcfe"/>
+  <text x="70" y="64" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#172033">Core Runtime Loop</text>
+  <text x="70" y="102" font-family="Inter, Arial, sans-serif" font-size="17" fill="#5d6b82">A turn is a controlled loop over context capture, model sampling, tool execution, events, and follow-up.</text>
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <rect x="80" y="160" width="170" height="92" rx="8" fill="#eaf2ff" stroke="#7ea7d8" stroke-width="2"/>
+    <text x="165" y="196" font-size="18" font-weight="700" fill="#1f4d7a">CodexThread</text>
+    <text x="165" y="222" font-size="14" fill="#36556f">submit Op</text>
+    <rect x="310" y="160" width="170" height="92" rx="8" fill="#eaf8ef" stroke="#80b68e" stroke-width="2"/>
+    <text x="395" y="196" font-size="18" font-weight="700" fill="#22603a">Session</text>
+    <text x="395" y="222" font-size="14" fill="#3f674d">schedule task</text>
+    <rect x="540" y="160" width="170" height="92" rx="8" fill="#fff5e8" stroke="#d9a441" stroke-width="2"/>
+    <text x="625" y="196" font-size="18" font-weight="700" fill="#7a4f00">StepContext</text>
+    <text x="625" y="222" font-size="14" fill="#735927">world state</text>
+    <rect x="770" y="160" width="170" height="92" rx="8" fill="#f1edff" stroke="#a995d6" stroke-width="2"/>
+    <text x="855" y="196" font-size="18" font-weight="700" fill="#58418a">Model</text>
+    <text x="855" y="222" font-size="14" fill="#665389">stream response</text>
+    <rect x="1000" y="160" width="170" height="92" rx="8" fill="#ffeef1" stroke="#d7909c" stroke-width="2"/>
+    <text x="1085" y="196" font-size="18" font-weight="700" fill="#8a3144">Tool Runtime</text>
+    <text x="1085" y="222" font-size="14" fill="#7a4752">run and return</text>
+    <rect x="340" y="430" width="220" height="92" rx="8" fill="#eef5f9" stroke="#a8bfd3" stroke-width="2"/>
+    <text x="450" y="466" font-size="18" font-weight="700" fill="#1f3a5f">Event Stream</text>
+    <text x="450" y="492" font-size="14" fill="#516174">UI and app-server</text>
+    <rect x="720" y="430" width="220" height="92" rx="8" fill="#eef5f9" stroke="#a8bfd3" stroke-width="2"/>
+    <text x="830" y="466" font-size="18" font-weight="700" fill="#1f3a5f">History</text>
+    <text x="830" y="492" font-size="14" fill="#516174">rollout and prompt</text>
+  </g>
+  <g stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M250 206 H310"/>
+    <path d="M480 206 H540"/>
+    <path d="M710 206 H770"/>
+    <path d="M940 206 H1000"/>
+    <path d="M1085 252 C1085 350 900 350 855 252"/>
+    <path d="M855 252 C820 390 540 390 450 430"/>
+    <path d="M1085 252 C1045 405 895 405 830 430"/>
+    <path d="M830 430 C790 355 760 300 855 252"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

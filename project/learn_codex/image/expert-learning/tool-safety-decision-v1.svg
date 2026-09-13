@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#fbfcfe"/>
+  <text x="70" y="64" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#172033">Tool Safety Decision Path</text>
+  <text x="70" y="102" font-family="Inter, Arial, sans-serif" font-size="17" fill="#5d6b82">Model actions become real side effects only after routing, approval, sandbox selection, execution, and event reporting.</text>
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <rect x="90" y="170" width="180" height="92" rx="8" fill="#f1edff" stroke="#a995d6" stroke-width="2"/>
+    <text x="180" y="207" font-size="18" font-weight="700" fill="#58418a">Tool call</text>
+    <text x="180" y="233" font-size="14" fill="#665389">model output</text>
+    <rect x="330" y="170" width="180" height="92" rx="8" fill="#eaf2ff" stroke="#7ea7d8" stroke-width="2"/>
+    <text x="420" y="207" font-size="18" font-weight="700" fill="#1f4d7a">Router</text>
+    <text x="420" y="233" font-size="14" fill="#36556f">select handler</text>
+    <rect x="570" y="170" width="180" height="92" rx="8" fill="#fff5e8" stroke="#d9a441" stroke-width="2"/>
+    <text x="660" y="207" font-size="18" font-weight="700" fill="#7a4f00">Approval</text>
+    <text x="660" y="233" font-size="14" fill="#735927">policy or user</text>
+    <rect x="810" y="170" width="180" height="92" rx="8" fill="#eaf8ef" stroke="#80b68e" stroke-width="2"/>
+    <text x="900" y="207" font-size="18" font-weight="700" fill="#22603a">Sandbox</text>
+    <text x="900" y="233" font-size="14" fill="#3f674d">file and network</text>
+    <rect x="1050" y="170" width="180" height="92" rx="8" fill="#eef5f9" stroke="#a8bfd3" stroke-width="2"/>
+    <text x="1140" y="207" font-size="18" font-weight="700" fill="#1f3a5f">Result</text>
+    <text x="1140" y="233" font-size="14" fill="#516174">event to model</text>
+    <rect x="570" y="430" width="180" height="92" rx="8" fill="#ffeef1" stroke="#d7909c" stroke-width="2"/>
+    <text x="660" y="467" font-size="18" font-weight="700" fill="#8a3144">Declined</text>
+    <text x="660" y="493" font-size="14" fill="#7a4752">no side effect</text>
+    <rect x="810" y="430" width="180" height="92" rx="8" fill="#ffeef1" stroke="#d7909c" stroke-width="2"/>
+    <text x="900" y="467" font-size="18" font-weight="700" fill="#8a3144">Retry path</text>
+    <text x="900" y="493" font-size="14" fill="#7a4752">if allowed</text>
+  </g>
+  <g stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M270 216 H330"/>
+    <path d="M510 216 H570"/>
+    <path d="M750 216 H810"/>
+    <path d="M990 216 H1050"/>
+    <path d="M660 262 V430"/>
+    <path d="M900 262 V430"/>
+    <path d="M990 476 C1090 430 1140 330 1140 262"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

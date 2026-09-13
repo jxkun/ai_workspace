@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#fbfcfe"/>
+  <text x="70" y="64" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#172033">Extension Capability Lifecycle</text>
+  <text x="70" y="102" font-family="Inter, Arial, sans-serif" font-size="17" fill="#5d6b82">External capability moves from declaration to model visibility, runtime execution, and event projection.</text>
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <rect x="90" y="170" width="190" height="100" rx="8" fill="#eaf2ff" stroke="#7ea7d8" stroke-width="2"/>
+    <text x="185" y="209" font-size="19" font-weight="700" fill="#1f4d7a">Declare</text>
+    <text x="185" y="237" font-size="14" fill="#36556f">skill or plugin</text>
+    <rect x="340" y="170" width="190" height="100" rx="8" fill="#f1edff" stroke="#a995d6" stroke-width="2"/>
+    <text x="435" y="209" font-size="19" font-weight="700" fill="#58418a">Load</text>
+    <text x="435" y="237" font-size="14" fill="#665389">manager and config</text>
+    <rect x="590" y="170" width="190" height="100" rx="8" fill="#eaf8ef" stroke="#80b68e" stroke-width="2"/>
+    <text x="685" y="209" font-size="19" font-weight="700" fill="#22603a">Expose</text>
+    <text x="685" y="237" font-size="14" fill="#3f674d">prompt and tools</text>
+    <rect x="840" y="170" width="190" height="100" rx="8" fill="#fff5e8" stroke="#d9a441" stroke-width="2"/>
+    <text x="935" y="209" font-size="19" font-weight="700" fill="#7a4f00">Execute</text>
+    <text x="935" y="237" font-size="14" fill="#735927">MCP or hook</text>
+    <rect x="1090" y="170" width="120" height="100" rx="8" fill="#eef5f9" stroke="#a8bfd3" stroke-width="2"/>
+    <text x="1150" y="209" font-size="19" font-weight="700" fill="#1f3a5f">Event</text>
+    <text x="1150" y="237" font-size="14" fill="#516174">project</text>
+    <rect x="315" y="425" width="230" height="100" rx="8" fill="#ffeef1" stroke="#d7909c" stroke-width="2"/>
+    <text x="430" y="464" font-size="19" font-weight="700" fill="#8a3144">Policy</text>
+    <text x="430" y="492" font-size="14" fill="#7a4752">trust and product gates</text>
+    <rect x="735" y="425" width="230" height="100" rx="8" fill="#ffeef1" stroke="#d7909c" stroke-width="2"/>
+    <text x="850" y="464" font-size="19" font-weight="700" fill="#8a3144">Failure</text>
+    <text x="850" y="492" font-size="14" fill="#7a4752">startup, auth, denial</text>
+  </g>
+  <g stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M280 220 H340"/>
+    <path d="M530 220 H590"/>
+    <path d="M780 220 H840"/>
+    <path d="M1030 220 H1090"/>
+    <path d="M435 270 V425"/>
+    <path d="M935 270 C935 345 870 365 850 425"/>
+    <path d="M430 425 C470 345 565 300 685 270"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

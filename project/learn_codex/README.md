@@ -12,12 +12,14 @@ learn_codex/
   docs/
     methodology.md
     source-snapshot.md
+    expert-learning/
     entry/
     core/
     support/
     extension/
   image/
     methodology/
+    expert-learning/
     architecture/
     state-memory/
     extension-points/
@@ -48,5 +50,6 @@ learn_codex/
 - 文档入口: `docs/index.md`
 - 方法论入口: `docs/methodology.md`
 - 学习路线: `docs/codex-harness-learning-roadmap.md`
+- 专家学习路径: `docs/expert-learning/README.md`
 - 源码快照记录: `docs/source-snapshot.md`
 - 当前四层文档入口: `docs/entry/README.md`、`docs/core/README.md`、`docs/support/README.md`、`docs/extension/README.md`

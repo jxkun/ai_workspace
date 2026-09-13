@@ -6,6 +6,21 @@
 
 ![Codex harness learning roadmap](../image/learning-roadmap/codex-harness-roadmap-v2.png)
 
+## 0. 推荐主路径：专家课程
+
+如果目标是“从小白到能像专家一样解释 Codex harness”，先读 [专家学习路径](expert-learning/README.md)。它把本文的阶段路线压缩成 5 篇课程、练习集和验收清单：
+
+| 顺序 | 专家课程 | 对应源码阶段 |
+| --- | --- | --- |
+| 1 | [全局心智模型](expert-learning/01-global-model.md) | Stage 0-1，先建立四层模型和请求生命周期 |
+| 2 | [Core Runtime Loop](expert-learning/02-core-runtime-loop.md) | Stage 2，复盘 thread/session/turn/model/tool 主循环 |
+| 3 | [Tools, Safety, And Patch](expert-learning/03-tools-safety-patch.md) | Stage 3，理解工具执行、副作用和安全边界 |
+| 4 | [State, Protocol, And Memory](expert-learning/04-state-protocol-memory.md) | Stage 4-5，理解协议、rollout、恢复和 memory |
+| 5 | [Extension System](expert-learning/05-extension-system.md) | Stage 6，理解 skills、plugins、MCP、hooks、connectors |
+| 6 | [专家练习集](expert-learning/exercises.md) 与 [专家验收清单](expert-learning/expert-checklist.md) | Stage 7，验证源码定位、故障诊断和重设计能力 |
+
+下面的 Stage 0-7 仍是源码深挖路线。专家课程负责把主干讲通，Stage 文档负责展开具体模块和长期补充专题。
+
 ## 1. 先建立全局心智模型
 
 可以先把 Codex harness 理解成四层：

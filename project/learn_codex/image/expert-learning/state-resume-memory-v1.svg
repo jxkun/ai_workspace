@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f8fafc"/>
+  <text x="70" y="64" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#172033">State, Resume, and Memory</text>
+  <text x="70" y="102" font-family="Inter, Arial, sans-serif" font-size="17" fill="#5d6b82">Codex separates live turn context from durable rollout records and reusable memory/context fragments.</text>
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <rect x="90" y="170" width="220" height="110" rx="8" fill="#eaf2ff" stroke="#7ea7d8" stroke-width="2"/>
+    <text x="200" y="211" font-size="19" font-weight="700" fill="#1f4d7a">Protocol</text>
+    <text x="200" y="239" font-size="14" fill="#36556f">Submission / Op / EventMsg</text>
+    <rect x="380" y="170" width="220" height="110" rx="8" fill="#eaf8ef" stroke="#80b68e" stroke-width="2"/>
+    <text x="490" y="211" font-size="19" font-weight="700" fill="#22603a">World State</text>
+    <text x="490" y="239" font-size="14" fill="#3f674d">rendered context diffs</text>
+    <rect x="670" y="170" width="220" height="110" rx="8" fill="#fff5e8" stroke="#d9a441" stroke-width="2"/>
+    <text x="780" y="211" font-size="19" font-weight="700" fill="#7a4f00">Rollout JSONL</text>
+    <text x="780" y="239" font-size="14" fill="#735927">ordered durable records</text>
+    <rect x="960" y="170" width="220" height="110" rx="8" fill="#f1edff" stroke="#a995d6" stroke-width="2"/>
+    <text x="1070" y="211" font-size="19" font-weight="700" fill="#58418a">Resume</text>
+    <text x="1070" y="239" font-size="14" fill="#665389">reverse scan and replay</text>
+    <rect x="350" y="430" width="250" height="110" rx="8" fill="#eef5f9" stroke="#a8bfd3" stroke-width="2"/>
+    <text x="475" y="471" font-size="19" font-weight="700" fill="#1f3a5f">Context Fragments</text>
+    <text x="475" y="499" font-size="14" fill="#516174">model-visible slices</text>
+    <rect x="710" y="430" width="250" height="110" rx="8" fill="#eef5f9" stroke="#a8bfd3" stroke-width="2"/>
+    <text x="835" y="471" font-size="19" font-weight="700" fill="#1f3a5f">Memory Extension</text>
+    <text x="835" y="499" font-size="14" fill="#516174">long-term reuse</text>
+  </g>
+  <g stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M310 225 H380"/>
+    <path d="M600 225 H670"/>
+    <path d="M890 225 H960"/>
+    <path d="M1070 280 C1070 610 240 610 200 280"/>
+    <path d="M490 280 V430"/>
+    <path d="M780 280 V430"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

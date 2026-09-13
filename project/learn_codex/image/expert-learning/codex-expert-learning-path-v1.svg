@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#f7f8fb"/>
+  <text x="80" y="70" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#182230">Codex Expert Learning Path</text>
+  <text x="80" y="112" font-family="Inter, Arial, sans-serif" font-size="18" fill="#516174">From first mental model to source-level redesign ability</text>
+  <g fill="#ffffff" stroke="#c8d1dc" stroke-width="2">
+    <rect x="80" y="170" width="170" height="120" rx="8"/>
+    <rect x="290" y="170" width="170" height="120" rx="8"/>
+    <rect x="500" y="170" width="170" height="120" rx="8"/>
+    <rect x="710" y="170" width="170" height="120" rx="8"/>
+    <rect x="920" y="170" width="170" height="120" rx="8"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <text x="165" y="215" font-size="21" font-weight="700" fill="#1f3a5f">1 Global</text>
+    <text x="165" y="247" font-size="15" fill="#516174">layers and request</text>
+    <text x="165" y="270" font-size="15" fill="#516174">lifecycle</text>
+    <text x="375" y="215" font-size="21" font-weight="700" fill="#1f3a5f">2 Core</text>
+    <text x="375" y="247" font-size="15" fill="#516174">thread, session,</text>
+    <text x="375" y="270" font-size="15" fill="#516174">turn loop</text>
+    <text x="585" y="215" font-size="21" font-weight="700" fill="#1f3a5f">3 Actions</text>
+    <text x="585" y="247" font-size="15" fill="#516174">tools, sandbox,</text>
+    <text x="585" y="270" font-size="15" fill="#516174">patch approval</text>
+    <text x="795" y="215" font-size="21" font-weight="700" fill="#1f3a5f">4 State</text>
+    <text x="795" y="247" font-size="15" fill="#516174">protocol, rollout,</text>
+    <text x="795" y="270" font-size="15" fill="#516174">resume memory</text>
+    <text x="1005" y="215" font-size="21" font-weight="700" fill="#1f3a5f">5 Extend</text>
+    <text x="1005" y="247" font-size="15" fill="#516174">skills, plugins,</text>
+    <text x="1005" y="270" font-size="15" fill="#516174">MCP hooks</text>
+  </g>
+  <g stroke="#62748a" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M250 230 H290"/>
+    <path d="M460 230 H500"/>
+    <path d="M670 230 H710"/>
+    <path d="M880 230 H920"/>
+  </g>
+  <rect x="180" y="390" width="920" height="120" rx="10" fill="#eef5f9" stroke="#a8bfd3" stroke-width="2"/>
+  <text x="640" y="430" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" text-anchor="middle" fill="#182230">Practice Loop</text>
+  <text x="640" y="466" font-family="Inter, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#516174">source location questions -> flow replay -> failure diagnosis -> redesign exercise</text>
+  <text x="640" y="494" font-family="Inter, Arial, sans-serif" font-size="17" text-anchor="middle" fill="#516174">each answer must point back to source, events, state, or tests</text>
+  <rect x="360" y="565" width="560" height="72" rx="8" fill="#fff7e8" stroke="#d9a441" stroke-width="2"/>
+  <text x="640" y="607" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" fill="#7a4f00">Expert gate: explain, trace, diagnose, redesign</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#62748a"/>
+    </marker>
+  </defs>
+</svg>
